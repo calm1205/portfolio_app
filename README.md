@@ -7,6 +7,8 @@
 |email|string|null: false|
 ### Association
 - has_one :address
+- has_one :card
+- has_many :orders
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -33,6 +35,7 @@
 |price|integer|null: false|
 ### Association
 - belongs_to :category
+- has_many :orders
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -67,3 +70,10 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
+
+## Prefecture(ActiveHash)
+|Column|Type|Options|
+|------|----|-------|
+|prefecture|string|null: false|
+### Association
+- has_many: products
