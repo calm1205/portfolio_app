@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    if @product.save! 
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
 
@@ -18,7 +23,8 @@ class ProductsController < ApplicationController
   # private
   
   def product_params
-    params.require(:product).permit(:name, :price)
+    params.require(:product).permit(:name, :detail, :price)
+    # category_id user_idは実装後にパラメータに入れる
   end
   # def admin_user?
   #   redirect_to root_path, unless current_user.admin?
