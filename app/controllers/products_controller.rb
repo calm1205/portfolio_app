@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   # private
   
   def product_params
-    params.require(:product).permit(:name, :detail, :price)
+    params.require(:product).permit(:name, :detail, :price, :image)
     # category_id user_idは実装後にパラメータに入れる
   end
   # def admin_user?

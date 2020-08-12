@@ -7,4 +7,5 @@ class Product < ApplicationRecord
     validates :price
     validates :detail
   end
+  has_one_attached :image
 end
