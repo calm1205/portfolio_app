@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   # before_action :set_product, only: [:show, :purchace_confirmaition]
   # skip_before_action :authenticated_user, only: [:index, :show]
   def index
+    @products = Product.all
   end
 
   def new
@@ -12,6 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save! 
+      binding.pry
       redirect_to root_path
     else
       render :new
