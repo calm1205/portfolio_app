@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     get 'users/new_address' => 'users/registrations#new_address'
     post 'users/create_address' => 'users/registrations#create_address'
   end
+  root "products#index"
+  devise_for :users
+  resources :products
 end
