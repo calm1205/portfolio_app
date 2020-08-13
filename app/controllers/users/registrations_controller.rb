@@ -9,13 +9,50 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    respond_with resource, location: users_new_address_path
+    user = User.new(sign_up_params)
+
+    if user.invalid?
+      render :new and return
+    end
+    session["devise.user_object"] = user.attributes
+    session["devise.user_object"][:password] = params[:user][:password]
+    respond_with user, location: users_new_address_path
+  end
+
+  def edit
+  end
+
+  def update
+    current_user.update(account_update_params)
+    redirect_to user_path(current_user)
   end
 
   def new_address
+    @address = Address.new
   end
 
   def create_address
+    user    = User.new(session["devise.user_object"])
+    address = Address.new(address_params)
+
+    user.address = address
+    
+    if user.save
+      sign_up(user.email, user)
+      redirect_to root_path , alert: @user.errors.full_messages and return
+    else
+      render :new_address and return
+    end
+  end
+
+  def edit_address
+    @address = current_user.address
+  end
+
+  def update_address
+    address = current_user.address
+    address.update(address_params)
+    redirect_to user_path(current_user)
   end
 
   # GET /resource/edit
@@ -63,4 +100,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def address_params
+    params.require(:address).permit(
+      :last_name,
+      :first_name,
+      :last_name_reading,
+      :first_name_reading,
+      :postal_code,
+      :prefecture_id,
+      :city,
+      :house_number,
+      :building,
+      :phone_number
+    )
+  end
 end

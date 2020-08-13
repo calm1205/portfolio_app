@@ -3,75 +3,76 @@
     住所入力
     ※登録の検証のため初期値入れています。
 .block.horizontal-padding-25
-  = form_with model: @address, url: users_create_address_path ,id: 'new_address', class: 'new_address', local: true do |f|
+  - console
+  = form_with model: @address, url: users_update_address_path ,id: 'new_address', class: 'new_address', local: true do |f|
     .input-field
       .input-field-main
         = f.label :last_name, "名前（性）"
         %span.required-true
           必須
         %br
-        = f.text_field :last_name, required: true, placeholder: "ダニエル", value: "ダニエル"
+        = f.text_field :last_name, required: true, placeholder: "ダニエル"
     .input-field
       .input-field-main
         = f.label :first_name, "名前（名）"
         %span.required-true
           必須
         %br
-        = f.text_field :first_name, required: true, placeholder: "ジャック", value: "ジャック"
+        = f.text_field :first_name, required: true, placeholder: "ジャック"
     .input-field
       .input-field-main
         = f.label :last_name_reading, "名前（性）カナ"
         %span.required-true
           必須
         %br
-        = f.text_field :last_name_reading, required: true, placeholder: "ダニエル", value: "ダニエル"
+        = f.text_field :last_name_reading, required: true, placeholder: "ダニエル"
     .input-field
       .input-field-main
         = f.label :first_name_reading, "名前（名）カナ"
         %span.required-true
           必須
         %br
-        = f.text_field :first_name_reading, required: true, placeholder: "ジャック", value: "ジャック"
+        = f.text_field :first_name_reading, required: true, placeholder: "ジャック"
     .input-field
       .input-field-main
         = f.label :postal_code, "郵便番号"
         %span.required-true
           必須
         %br
-        = f.text_field :postal_code, required: true, placeholder: "例）123-4567", value: "123-4567"
+        = f.text_field :postal_code, required: true, placeholder: "例）123-4567"
     .input-field
       .input-field-main
         = f.label :prefecture_id, "都道府県"
         %span.required-true
           必須
         %br
-        = f.collection_select :prefecture_id, Prefecture.all, :id , :name, {include_blank: "---", selected: 1}, required: true
+        = f.collection_select :prefecture_id, Prefecture.all, :id , :name, {include_blank: "---"}, required: true
     .input-field
       .input-field-main
         = f.label :city, "市区町村"
         %span.required-true
           必須
         %br
-        = f.text_field :city, required: true, placeholder: "例）横浜市緑区", value: "横浜市戸塚区"
+        = f.text_field :city, required: true, placeholder: "例）横浜市緑区"
     .input-field
       .input-field-main
         = f.label :house_number, "番地"
         %span.required-true
           必須
         %br
-        = f.text_field :house_number, required: true, placeholder: "例）青山1-1-1", value: "青山1-1-1"
+        = f.text_field :house_number, required: true, placeholder: "例）青山1-1-1"
     .input-field
       .input-field-main
         = f.label :building, "建物名"
         %span.required-false
           任意
         %br
-        = f.text_field :building, placeholder: "例）柳ビル103", value: "表参道ヒルズ"
+        = f.text_field :building, placeholder: "例）柳ビル103"
     .input-field
       .input-field-main
         = f.label :phone_number, "電話番号"
         %span.required-false
           任意
         %br
-        = f.text_field :phone_number, placeholder: "例）09012345678", value: "12345678900"
-    = f.submit "次へ進む", class:"button back-red font-white"
+        = f.text_field :phone_number, placeholder: "例）09012345678"
+    = f.submit "addressを編集", class:"button back-red font-white"

@@ -1,0 +1,38 @@
+.info
+  .info__user
+    ユーザ情報
+    .info__user--email
+      = current_user.email
+
+  %br/
+  .info__address
+    アドレス情報
+    .info__address--firstName
+      = current_user.address.first_name
+    .info__address--lastName
+      = current_user.address.last_name
+    .info__address--firstNameReading
+      = current_user.address.first_name_reading
+    .info__address--lastNameReading
+      = current_user.address.last_name_reading
+    .info__address--postalCode
+      = current_user.address.postal_code
+    .info__address--prefecture
+      = Prefecture.find(current_user.address.prefecture_id).name
+    .info__address--city
+      = current_user.address.city
+    .info__address--houseNumber
+      = current_user.address.house_number
+    .info__address--building
+      = current_user.address.building
+    .info__address--phoneNumber
+      = current_user.address.phone_number
+  
+  %br/
+
+  .editEmail
+    = link_to edit_user_registration_path do
+      edit email
+  .editAddress
+    = link_to users_edit_address_path do
+      edit address

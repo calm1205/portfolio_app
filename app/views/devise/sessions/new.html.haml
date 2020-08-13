@@ -3,9 +3,14 @@
     .account-page__inner--left.account-page__header
       %h2 Log in
       %h5 登録しているユーザーでログイン
-      = render "devise/shared/links"
     .account-page__inner--right.user-form
+      -# = form_with model: @user, url: user_session_path do |f|
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+        -# %ul
+        -#   - f.object.errors.full_messages.each do |message|
+        -#     %li
+        -#       = message
         .field
           .field-label
             = f.label :email
