@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   # association
   has_one :address, dependent: :destroy
+  has_one :sns_credential, dependent: :destroy
 
   # validation
   validates :password, format: { with: /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)[a-z\dA-Z]{8,128}+\z/ , message: "は大文字小文字の英数字を含む必要があります。" }
