@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post  'users/create_address', to: 'users/registrations#create_address'
     get   'users/edit_address',   to: 'users/registrations#edit_address'
     patch 'users/update_address', to: 'users/registrations#update_address' 
+    get   'users/select',         to: 'users/refistrations#select'
   end
 
   root "products#index"
