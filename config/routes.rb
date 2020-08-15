@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
 
   root "products#index"
-
+  resources :products do
+    member do
+      post "cart_in"
+      patch "cart_in"
+    end
+  end
   resources :users, only: [:show]
-  resources :products
 end

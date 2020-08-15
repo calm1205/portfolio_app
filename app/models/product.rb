@@ -9,4 +9,5 @@ class Product < ApplicationRecord
     validates :image
   end
   has_one_attached :image, dependent: :destroy
+  has_one :cart
 end
