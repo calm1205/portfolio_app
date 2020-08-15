@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    # binding.pry
     super
   end
 
@@ -12,11 +13,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.new(sign_up_params)
 
     if user.invalid?
-      render :new and return
+      flash.now[:email] = user.errors[:email]
+      flash.now[:password] = user.errors[:password]
+      # render :new
+      redirect_to new_user_registration_path
+    else
+      session["devise.user_object"] = user.attributes
+      session["devise.user_object"][:password] = params[:user][:password]
+      respond_with user, location: users_new_address_path
     end
-    session["devise.user_object"] = user.attributes
-    session["devise.user_object"][:password] = params[:user][:password]
-    respond_with user, location: users_new_address_path
   end
 
   def edit
@@ -35,11 +40,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user    = User.new(session["devise.user_object"])
     address = Address.new(address_params)
 
-    user.address = address
+    if address.invalid?
+      flash.now[:last_name]          = address.errors[:last_name]
+      flash.now[:first_name]         = address.errors[:first_name]
+      flash.now[:last_name_reading]  = address.errors[:last_name_reading]
+      flash.now[:first_name_reading] = address.errors[:first_name_reading]
+      flash.now[:postal_code]        = address.errors[:postal_code]
+      flash.now[:city]               = address.errors[:city]
+      flash.now[:house_number]       = address.errors[:house_number]
+      flash.now[:phone_number]       = address.errors[:phone_number]
+      render :new_address and return
+    end
     
+    user.address = address
     if user.save
       sign_up(user.email, user)
-      redirect_to root_path , alert: @user.errors.full_messages and return
+      redirect_to root_path , alert: user.errors.full_messages and return
     else
       render :new_address and return
     end
