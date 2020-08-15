@@ -3,24 +3,30 @@
     .account-page__inner--left.account-page__header
       %h2 Create Account
       %h5 新規アカウントの作成
+      ※emailやpasswordを正しくないもので入力した際はリダイレクトにしています。
+      %br
+      URLがusersになってリロードするとrouting errorになるので。
+      %br
       = render "devise/shared/links"
     .account-page__inner--right.user-form
-      = form_with model: @user, url: registration_path(resource_name) do |f|
+      = form_with model: @user, url: user_registration_path , local: true do |f|
         .field
+          = display_validation_errors("email","email")
           .field-label
             = f.label :email
           .field-input
             = f.email_field :email,value: "sample@gmail.com"
         .field
+          = display_validation_errors("password","password")
           .field-label
             = f.label :password
-            %i (英数字8文字以上) ※ passwordというパスワードをデフォルト入力
+            %i (大文字小文字英数字8文字以上128文字以下) ※ Passw0rdというパスワードをデフォルト入力
           .field-input
-            = f.password_field :password, autocomplete: "off",value: "password"
+            = f.password_field :password, autocomplete: "off",value: "Passw0rd"
         .field
           .field-label
             = f.label :password_confirmation
           .field-input
-            = f.password_field :password_confirmation, autocomplete: "off",value: "password"
+            = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
         .actions
           = f.submit "Create Account", class: 'btn'
