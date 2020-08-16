@@ -2,15 +2,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def select
+    session.delete("devise.sns_auth")
+    @auth_text = "で登録する。"
+  end
+
   # GET /resource/sign_up
   def new
-    # binding.pry
-    super
+    if session["devise.sns_auth"]
+      
+      password = Devise.friendly_token[8,12] + "1aA"
+      session["devise.sns_auth"]["user"]["password"] = password
+      session["devise.sns_auth"]["user"]["password_confirmation"] = password
+      redirect_to users_new_address_path
+    else
+      super
+    end
   end
 
   # POST /resource
   def create
+
     user = User.new(sign_up_params)
+    user.build_sns_credential(session["devise.sns_auth"]["sns_credential"]) if session["devise.sns_auth"]
 
     if user.invalid?
       flash.now[:email] = user.errors[:email]
@@ -20,7 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       session["devise.user_object"] = user.attributes
       session["devise.user_object"][:password] = params[:user][:password]
-      respond_with user, location: users_new_address_path
+      # respond_with user, location: users_new_address_path
+      redirect_to users_new_address_path
     end
   end
 
@@ -37,9 +52,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_address
-    user    = User.new(session["devise.user_object"])
     address = Address.new(address_params)
 
+    # SNS認証を経由してきたかで分岐
+    if session["devise.sns_auth"]
+      user                = User.new(session["devise.sns_auth"]["user"])
+      user.snsCredential  = SnsCredential.new(session["devise.sns_auth"]["sns_credential"])
+    else
+      user                = User.new(session["devise.user_object"])
+    end
+
+    # Addressが保存できなければrender
     if address.invalid?
       flash.now[:last_name]          = address.errors[:last_name]
       flash.now[:first_name]         = address.errors[:first_name]
@@ -53,9 +76,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     
     user.address = address
+
     if user.save
-      sign_up(user.email, user)
-      redirect_to root_path , alert: user.errors.full_messages and return
+      sign_in(user)
+      redirect_to root_path, notice: "ユーザ登録完了しました。" and return
     else
       render :new_address and return
     end

@@ -6,7 +6,7 @@
     login
 
 .sign_up
-  = link_to new_user_registration_path do
+  = link_to users_select_path do
     sign_up
 
 .sign_out
@@ -21,6 +21,7 @@
 - else
   現在は未ログイン状態です。
 
+- console
 
 
 - @products.each do |product|

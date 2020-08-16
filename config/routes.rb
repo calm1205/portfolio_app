@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   devise_scope :user do
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
     post  'users/create_address', to: 'users/registrations#create_address'
     get   'users/edit_address',   to: 'users/registrations#edit_address'
     patch 'users/update_address', to: 'users/registrations#update_address' 
+    get   'users/select',         to: 'users/registrations#select'
   end
 
   root "products#index"
