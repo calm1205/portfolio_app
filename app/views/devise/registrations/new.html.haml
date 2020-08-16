@@ -15,18 +15,19 @@
           .field-label
             = f.label :email
           .field-input
-            = f.email_field :email,value: "sample@gmail.com"
-        .field
-          = display_validation_errors("password","password")
-          .field-label
-            = f.label :password
-            %i (大文字小文字英数字8文字以上128文字以下) ※ Passw0rdというパスワードをデフォルト入力
-          .field-input
-            = f.password_field :password, autocomplete: "off",value: "Passw0rd"
-        .field
-          .field-label
-            = f.label :password_confirmation
-          .field-input
-            = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
+            = f.email_field :email
+        - unless @sns_auth
+          .field
+            = display_validation_errors("password","password")
+            .field-label
+              = f.label :password
+              %i (大文字小文字英数字8文字以上128文字以下) ※ Passw0rdというパスワードをデフォルト入力
+            .field-input
+              = f.password_field :password, autocomplete: "off",value: "Passw0rd"
+          .field
+            .field-label
+              = f.label :password_confirmation
+            .field-input
+              = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
         .actions
           = f.submit "Create Account", class: 'btn'
