@@ -6,9 +6,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
+  has_many :carts
+  has_many :products, through: :carts
+  
   # association
   has_one :address, dependent: :destroy
   has_one :snsCredential, dependent: :destroy
+
 
   # validation
   validates :password, format: { with: /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)[a-z\dA-Z]{8,128}+\z/ , message: "は大文字小文字の英数字を含む必要があります。" }
