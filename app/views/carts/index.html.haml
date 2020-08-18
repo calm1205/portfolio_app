@@ -1,0 +1,8 @@
+- @carts.each do |product|
+  = product.name
+  = product.price
+  円
+  = image_tag product.image
+  .show-quantity
+    = product.cart.quantity
+    個
