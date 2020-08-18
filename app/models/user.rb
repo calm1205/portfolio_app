@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
-  has_many :carts
-  has_many :products, through: :carts
+  has_many :carts, dependent: :destroy
+  has_many :products, through: :carts, dependent: :destroy
   
   # association
   has_one :address, dependent: :destroy
