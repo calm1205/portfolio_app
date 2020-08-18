@@ -6,3 +6,5 @@
   .show-quantity
     = product.cart.quantity
     個
+  = link_to cart_path(product.cart.id), method: :delete do
+    カートから削除する

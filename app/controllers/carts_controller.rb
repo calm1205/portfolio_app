@@ -5,6 +5,12 @@ class CartsController < ApplicationController
   end
 
   def destroy
-
+    cart_product
+    @cart.destroy
+    redirect_to carts_path
+  end
+  private 
+  def cart_product
+    @cart = Cart.find(params[:id])
   end
 end
