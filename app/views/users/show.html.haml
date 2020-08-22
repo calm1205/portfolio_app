@@ -30,9 +30,28 @@
   
   %br/
 
+  .info__card
+    登録済みのカード情報
+  - if @card
+    カード番号
+    %br
+    = "**** **** **** #{@card.last4}"
+    %br
+    カード期限
+    %br
+    = "#{@card.exp_month} / #{@card.exp_year}"
+    %br
+    %br
+  - else
+    登録済みのカードは存在しません。
+
   .editEmail
     = link_to edit_user_registration_path do
       edit email
   .editAddress
     = link_to users_edit_address_path do
       edit address
+
+  .registrationCard
+    = link_to cards_path do
+      registration card

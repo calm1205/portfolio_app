@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       patch "cart_in"
     end
   end
+
   resources :users, only: [:show]
   resources :carts, only: [:index, :destroy]
+  resources :cards
 end
