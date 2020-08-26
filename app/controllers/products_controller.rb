@@ -22,11 +22,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if @product&.cart
-      @cart = @product.cart
-    else
-      @cart = Cart.new
-    end
+    @product = Product.find(params[:id])
+    # if @product&.cart
+    #   @cart = @product.cart
+    # else
+    #   @cart = Cart.new
+    # end
   end
 
   def edit
@@ -47,17 +48,7 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
-  def cart_in
-    @cart = current_cart_in
-    if @product&.cart
-      @cart.quantity += params[:cart][:quantity].to_i
-      @cart.save!
-    else
-      @cart.save!
-    end
-    
-    redirect_to root_path
-  end
+  
 
   private
   
@@ -71,9 +62,6 @@ class ProductsController < ApplicationController
   #    end
   # end
 
-  def cart_params
-    params.require(:cart).permit(:quantity, :cart_id)
-  end
 
   def set_product
     @product = Product.find(params[:id])

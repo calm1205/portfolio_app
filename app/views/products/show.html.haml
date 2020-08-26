@@ -2,17 +2,20 @@
   = @product.name
 = link_to product_path(@product), method: :delete do
   %div 商品の削除
-- if @product.cart&.persisted?
-  = form_with model: @cart, url: cart_in_product_path(@product.id), local: true do |f|
-    = f.select(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
-    = f.hidden_field :cart_id, value: @product.cart.id
-    = f.submit "カートに追加する"
-- else
-  = form_with model: @cart, url: cart_in_product_path(@product.id) do |f|
-    = f.select(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
-    = f.submit "カートにいれる"
+= select_tag(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
+= button_tag "商品をカートにいれる",id: "cart_btn", value: @product.id 
+-# - if @product.cart&.persisted?
+-#   = form_with model: @cart, url: cart_in_product_path(@product.id), local: true do |f|
+-#     = f.select(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
+-#     = f.hidden_field :cart_id, value: @product.cart.id
+-#     = f.submit "カートに追加する"
+-# - else
+-#   = form_with model: @cart, url: cart_in_product_path(@product.id) do |f|
+-#     = f.select(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
+-#     = f.submit "カートにいれる"
 
 .show-cart
   = link_to carts_path, class: "cart-product" do
     買い物かご
  
+
