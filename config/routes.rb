@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   end
 
   root "products#index"
-  resources :products do
-    member do
-      post "cart_in"
-      patch "cart_in"
+  resources :products 
+    resources :carts do
+      collection do
+        post "cart_in", to: "carts#cart_in"
+      end
     end
-  end
 
   resources :users, only: [:show]
   resources :carts, only: [:index, :destroy]
