@@ -2,7 +2,6 @@ class CartsController < ApplicationController
   before_action :setup_cart_product
   def index
     @carts = current_user.cart_products
-    # binding.pry
   end
 
   # def destroy
@@ -23,6 +22,12 @@ class CartsController < ApplicationController
     @cart_product.save!
     flash[:notice] = "商品をカートに入れました。"
     # binding.pry
+  end
+
+  def destroy
+      @cart_product = CartProduct.find(params[:id])
+      @cart_product.destroy
+      redirect_to carts_path, notice: "カートの商品を削除しました"
   end
 
 
