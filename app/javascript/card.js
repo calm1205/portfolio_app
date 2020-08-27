@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function () {
       } else{ 
         alert("カード情報が正しくありません。");
         console.log(response.error.message);
-        regist_button.prop('disabled', false);
+        regist_button.disabled = false;
       }
     });
   });
