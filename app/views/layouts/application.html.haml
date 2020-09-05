@@ -7,7 +7,33 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap")/
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
     = render 'layouts/notifications'
-    = yield
+    %header
+      %h1
+        %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
+      .nav
+        %ul
+          %li story
+          %li news
+          %li products
+          %li login
+        .btn
+          .bar.btn-top
+          .bar.btn-mid
+          .bar.btn-bottom
+    %main
+      = yield
+    %footer
+      %ul.footer-nav
+        %li.footer-list 会社概要
+        %li.footer-list 特定取引法表示
+        %li.footer-list 利用規約
+        %li.footer-list お問い合わせ
+        %li.footer-list Q＆A
+        %li.footer-list 採用情報
+      %img.footer-logo(src="/assets/eclogo-white.png" alt="")/
+
+
