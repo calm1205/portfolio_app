@@ -1,5 +1,7 @@
 = link_to new_product_path do
   %div 管理者用商品出品ページ
+= link_to carts_path do
+  買い物カゴへ
 - @products.each do |product|
   = link_to product_path(product) do
     %div 商品の詳細について

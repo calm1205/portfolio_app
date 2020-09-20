@@ -20,6 +20,13 @@ Rails.application.routes.draw do
         post "cart_in", to: "carts#cart_in"
       end
     end
+  
+  resources :purchases do
+    collection do
+      get "confirm", to: 'purchases#confirm'
+      post "purchase", to: "purchases#purchase"
+    end
+  end
 
   resources :users, only: [:show]
   resources :carts, only: [:index, :destroy]
