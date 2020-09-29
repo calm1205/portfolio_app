@@ -1,33 +1,16 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Create Account
-      %h5 新規アカウントの作成
-      ※emailやpasswordを正しくないもので入力した際はリダイレクトにしています。
-      %br
-      URLがusersになってリロードするとrouting errorになるので。
-      %br
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
-      = form_with model: @user, url: user_registration_path , local: true do |f|
-        .field
-          = display_validation_errors("email","email")
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email
-        - unless @sns_auth
-          .field
-            = display_validation_errors("password","password")
-            .field-label
-              = f.label :password
-              %i (大文字小文字英数字8文字以上128文字以下) ※ Passw0rdというパスワードをデフォルト入力
-            .field-input
-              = f.password_field :password, autocomplete: "off",value: "Passw0rd"
-          .field
-            .field-label
-              = f.label :password_confirmation
-            .field-input
-              = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
-        .actions
-          = f.submit "Create Account", class: 'btn'
+.signUp
+  .signUp__box
+    .signUp__box__title
+      Create Account
+    = form_with model: @user, url: user_registration_path , local: true do |f|
+      .email
+        = display_validation_errors("email","email")
+        = f.email_field :email, placeholder: ' type your email'
+      - unless @sns_auth
+        .password
+          = display_validation_errors("password","password")
+          = f.password_field :password, autocomplete: "off",value: "Passw0rd"
+        .password
+          = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
+        .button
+          = f.submit "Registar Address"

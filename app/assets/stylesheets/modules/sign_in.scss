@@ -45,18 +45,20 @@
         }
 
         &__email{
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           #user_email{
             width: 200px;
             height: 20px;
+            padding: 5px;
           }
         }
 
         &__password{
-          margin-bottom: 40px;
+          margin-bottom: 30px;
           #user_password{
             width: 200px;
             height: 20px;
+            padding: 5px;
           }
         }
 
@@ -64,8 +66,8 @@
           input{
             background-color: #1a1a1a;
             color: white;
-            width: 203px;
-            height: 30px;
+            width: 213px;
+            height: 40px;
             cursor: pointer;
           }
         }
