@@ -19,7 +19,9 @@
           %li story
           %li news
           %li products
-          %li login
+          %li
+            = link_to new_user_session_path do
+              login
         .btn
           .bar.btn-top
           .bar.btn-mid
@@ -35,5 +37,3 @@
         %li.footer-list Q＆A
         %li.footer-list 採用情報
       %img.footer-logo(src="/assets/eclogo-white.png" alt="")/
-
-

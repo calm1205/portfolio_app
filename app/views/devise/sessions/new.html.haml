@@ -1,22 +1,17 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      = render "devise/shared/select_auth"
+.signIn
+  .signIn__box
+    .left
+      %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
+    .line
 
-      %h2 Log in
-      %h5 登録しているユーザーでログイン
-    .account-page__inner--right.user-form
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email, autofocus: true
-          .field
-            .field-label
-              = f.label :password
-              %i (英数字8文字以上)
-            .field-input
-              = f.password_field :password, autocomplete: "off"
-          .actions
-            = f.submit "Log in", class: 'btn'
+    .right
+      .form
+        .form__title
+          Sign in
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form__email
+            = f.email_field :email, autofocus: true, placeholder: ' type your email'
+          .form__password
+            = f.password_field :password, autocomplete: "off", placeholder: ' type your password'
+          .form__button
+            = f.submit "Sign in"
