@@ -1,57 +1,100 @@
-.info
-  .info__user
-    ユーザ情報
-    .info__user--email
-      = current_user.email
+.mypage
+  .mypage__box
+    .mypage__box--title
+      My Page
 
-  %br/
-  .info__address
-    アドレス情報
-    .info__address--firstName
-      = current_user.address.first_name
-    .info__address--lastName
-      = current_user.address.last_name
-    .info__address--firstNameReading
-      = current_user.address.first_name_reading
-    .info__address--lastNameReading
-      = current_user.address.last_name_reading
-    .info__address--postalCode
-      = current_user.address.postal_code
-    .info__address--prefecture
-      = Prefecture.find(current_user.address.prefecture_id).name
-    .info__address--city
-      = current_user.address.city
-    .info__address--houseNumber
-      = current_user.address.house_number
-    .info__address--building
-      = current_user.address.building
-    .info__address--phoneNumber
-      = current_user.address.phone_number
+    .mypage__box__info
+      .mypage__box__info--title
+        EMAIL
+      .mypage__box__info--content
+        = current_user.email
+
+    .edit
+      = link_to edit_user_registration_path do
+        .button
+          EDIT EMAIL
+
+    .mypage__box__info
+      .mypage__box__info--title
+        NAME
+      .mypage__box__info--content
+        = current_user.address.first_name
+        = current_user.address.last_name
+
+    .mypage__box__info
+      .mypage__box__info--title
+        NAME READING
+      .mypage__box__info--content
+        = current_user.address.first_name_reading
+        = current_user.address.last_name_reading
+
+    .mypage__box__info
+      .mypage__box__info--title
+        POST CODE
+      .mypage__box__info--content
+        = current_user.address.postal_code
+        
+    .mypage__box__info
+      .mypage__box__info--title
+        PREFECTURE
+      .mypage__box__info--content
+        = Prefecture.find(current_user.address.prefecture_id).name
+        
+    .mypage__box__info
+      .mypage__box__info--title
+        CITY
+      .mypage__box__info--content
+        = current_user.address.city
+        
+    .mypage__box__info
+      .mypage__box__info--title
+        HOUSE NUMBER
+      .mypage__box__info--content
+        = current_user.address.house_number
+        
+    .mypage__box__info
+      .mypage__box__info--title
+        BUILDING
+      .mypage__box__info--content
+        = current_user.address.building
+        
+    .mypage__box__info
+      .mypage__box__info--title
+        BUILDING
+      .mypage__box__info--content
+        = current_user.address.phone_number
+
+    .edit
+      = link_to users_edit_address_path do
+        .button
+          EDIT ADDRESS
   
-  %br/
+    - if @card
+      .mypage__box__info
+        .mypage__box__info--title
+          CARD
+        .mypage__box__info--content
+          .card
+            = "**** **** **** #{@card.last4}"
+          .card
+            = "#{@card.exp_month} / #{@card.exp_year}"
+        
+      .edit
+        = link_to cards_path do
+          .button
+            EDIT CARD
 
-  .info__card
-    登録済みのカード情報
-  - if @card
-    カード番号
-    %br
-    = "**** **** **** #{@card.last4}"
-    %br
-    カード期限
-    %br
-    = "#{@card.exp_month} / #{@card.exp_year}"
-    %br
-    %br
-  - else
-    登録済みのカードは存在しません。
+    - else
+      .mypage__box__info
+        .mypage__box__info--title
+          NO CARD
+        .mypage__box__info--content
+          .card
+            = "---- ---- ---- ----"
+          .card
+            = "-- / --"
 
-  .editEmail
-    = link_to edit_user_registration_path do
-      edit email
-  .editAddress
-    = link_to users_edit_address_path do
-      edit address
-
-  .registrationCard
-    = link_to cards_path do
-      registration card
+      .edit
+        = link_to cards_path do
+          .button
+            REGISTAR CARD
