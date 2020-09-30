@@ -1,26 +1,18 @@
-.cards
-  カードは1人一枚しか登録できません。
-  %br
-  登録を複数回行うと上書きされます。
-  = form_with model: @card ,id: "card_form", html:{name: "card_form"} do |f|
-    = f.label :hoge, "カード番号"
-    必須
-    %br
-    = f.text_field :hoge,maxlength: 16, id: "card_number_form", placeholder: "1234 5678 1234 5678", value: "4242424242424242"
+.newCard
+  .newCard__box
+    .newCard__box--title
+      Registar Credit Card
 
-    %br
-    = f.label :hoge, "有効期限"
-    必須
-    %br
-    = f.select :hoge, 1..12, {include_blank: "---", selected: 10}, id: "exp_month_form"
-    月
-    = f.select :hoge, [2020,2021,2022,2023,2024,2025], {include_blank: "---", selected: 2025}, id: "exp_year_form"
-    年
-    %br
-    = f.label :hoge, "セキュリティコード"
-    必須
-    %br
-    = f.text_field :hoge, id: "cvc_form", placeholder: "カード背面４桁もしくは３桁の番号", value: "123"
+    = form_with model: @card ,id: "card_form", html:{name: "card_form"} do |f|
+      .single
+        = f.text_field :hoge,maxlength: 16, id: "card_number_form", placeholder: "1234 5678 1234 5678", value: "4242424242424242"
+      .double
+        = f.select :hoge, 1..12, {include_blank: "---", selected: 10}, id: "exp_month_form"
+        month / 
+        = f.select :hoge, [2020,2021,2022,2023,2024,2025], {include_blank: "---", selected: 2025}, id: "exp_year_form"
+        year
+      .single
+        = f.text_field :hoge, id: "cvc_form", placeholder: "カード背面４桁もしくは３桁の番号", value: "123"
 
-    %br
-    = f.submit "次へ進む", class:"button back-red font-white", id: "card_submit"
+      .button
+        = f.submit "REGISTAR", class:"button back-red font-white", id: "card_submit"

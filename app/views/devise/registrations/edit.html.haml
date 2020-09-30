@@ -1,9 +1,10 @@
 .editEmail
-  ここに新しいemailを入力してください。
-  = form_with model: current_user, url: user_registration_path do |f|
-    .field-label
-      = f.label :email
-    .field-input
-      = f.email_field :email, autofocus: true
-    .actions
-      = f.submit "edit email"
+  .editEmail__box
+    .editEmail__box--title
+      Edit Email
+
+    = form_with model: current_user, url: user_registration_path do |f|
+      .single
+        = f.email_field :email, autofocus: true
+      .button
+        = f.submit "EDIT EMAIL"
