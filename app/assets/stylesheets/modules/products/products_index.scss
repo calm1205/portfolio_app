@@ -1,6 +1,6 @@
 .products{
   width: 40%;
-  height: calc( 100vh - 320px );
+  height: calc( 100vh - 330px );
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +19,6 @@
   }
   &__card a:hover{
     margin-top: -3px;
-    margin-left: -3px;
     transition: 0.1s;
     box-shadow: 10px 15px 20px #888888;
   }
