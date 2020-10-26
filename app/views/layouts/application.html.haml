@@ -12,12 +12,16 @@
   %body
     = render 'layouts/notifications'
     %header
-      %h1
+      = link_to root_path do
         %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
       .nav
         %ul
-          %li story
-          %li news
+          %li
+            = link_to "#" do
+              story
+          %li
+            = link_to "#" do
+              news
           %li
             - if user_signed_in?
               = link_to destroy_user_session_path, method: :delete do

@@ -31,13 +31,3 @@
       .info
         .button#cart_btn{value: @product.id}
           ADD TO CART
-
-      .info
-        .button
-          = link_to  edit_product_path(@product.id) do
-            EDIT
-
-      .info
-        .button
-          = link_to product_path(@product), method: :delete do
-            DELETE

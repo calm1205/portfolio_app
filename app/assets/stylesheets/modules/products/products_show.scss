@@ -1,55 +1,66 @@
 .product{
-  width: 40%;
-  margin: 0 auto;
+    width: 40%;
+    margin: 0 auto;
 
   
-  &__box{
-    
-    img{
-      margin-top: 100px;
-      width: 100%;
-      border: 1px solid whitesmoke;
+    &__box{
+        img{
+            margin-top: 100px;
+            width: 100%;
+            border: 5px solid whitesmoke;
+        }
+
+        &__info{
+            margin-top: 100px;
+
+            .info{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 25px;
+
+                &__title{
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
+                &__content{
+                    width: 150px;
+                    word-wrap: break-word;
+
+                    select{
+                        width: 150px;
+                        height: 30px;
+                        padding: 5px;
+                        border: 1px solid lightgray;
+                    }
+                }
+
+                #cart_btn{
+                    margin: 50px 0;
+                }
+                .button{
+                    width: 100%;
+                    height: 50px;
+                    background-color: #1a1a1a;
+                    color: white;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 50px;
+                    letter-spacing: 0.3rem;
+
+                    a{
+                        color: white;
+                        text-decoration: none;
+                    }
+                }
+                .button:hover{
+                    cursor: pointer;
+                    height: 44px;
+                    line-height: 44px;
+                    background-color: white;
+                    border: 3px solid #1a1a1a;
+                    color: #1a1a1a;
+                }
+            }
+        }
     }
-
-    &__info{
-      margin-top: 100px;
-
-      .info{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
-
-        &__title{
-          font-weight: bold;
-          font-size: 1.2rem;
-        }
-        &__content{
-          width: 150px;
-          word-wrap: break-word;
-        }
-
-        #cart_btn{
-          margin-top: 50px;
-        }
-        .button{
-          width: 100%;
-          height: 50px;
-          background-color: #1a1a1a;
-          color: white;
-          font-weight: bold;
-          text-align: center;
-          line-height: 50px;
-          letter-spacing: 0.3rem;
-
-          a{
-            color: white;
-            text-decoration: none;
-          }
-        }
-        .button:hover{
-          cursor: pointer;
-        }
-      }
-    }
-  }
 }
