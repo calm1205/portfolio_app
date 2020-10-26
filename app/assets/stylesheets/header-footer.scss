@@ -59,11 +59,10 @@ header{
 
 footer{
     background-color: #1a1a1a;
-    height: 26rem;
+    height: 20rem;
     width: 100vw;
     text-align: center;
     .footer-nav{
-        padding-top: 5rem;
         display: flex;
         max-width: 768px;
         justify-content: space-around;
