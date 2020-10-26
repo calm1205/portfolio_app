@@ -5,6 +5,11 @@
 
     .mypage__box__info
       .mypage__box__info--title
+        NICKNAME
+      .mypage__box__info--content
+        = current_user.nickname
+    .mypage__box__info
+      .mypage__box__info--title
         EMAIL
       .mypage__box__info--content
         = current_user.email
@@ -12,7 +17,7 @@
     .edit
       = link_to edit_user_registration_path do
         .button
-          EDIT EMAIL
+          EDIT USER
 
     .mypage__box__info
       .mypage__box__info--title

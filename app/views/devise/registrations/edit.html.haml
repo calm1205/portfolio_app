@@ -5,6 +5,8 @@
 
     = form_with model: current_user, url: user_registration_path do |f|
       .single
-        = f.email_field :email, autofocus: true
+        = f.text_field :nickname
+      .single
+        = f.email_field :email
       .button
         = f.submit "EDIT EMAIL"
