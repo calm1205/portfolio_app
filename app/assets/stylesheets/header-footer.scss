@@ -58,22 +58,19 @@ header{
 }
 
 footer{
-    background-color: #1a1a1a;
-    height: 20rem;
+    height: 10rem;
     width: 100vw;
-    text-align: center;
+    line-height: 10rem;
+    background-color: #1a1a1a;
     .footer-nav{
         display: flex;
         max-width: 768px;
         justify-content: space-around;
         flex-wrap: wrap;
         margin: 0 auto;
-        .footer-list{
-            color:#fff;
 
+        li{
+          color: white;
         }
-    }
-    .footer-logo{
-
     }
 }
