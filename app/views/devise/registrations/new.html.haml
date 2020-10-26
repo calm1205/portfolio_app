@@ -3,6 +3,8 @@
     .signUp__box__title
       Create Account
     = form_with model: @user, url: user_registration_path , local: true do |f|
+      .nikname
+        = f.text_field :nickname, placeholder: 'type your nickname'
       .email
         = display_validation_errors("email","email")
         = f.email_field :email, placeholder: ' type your email'
