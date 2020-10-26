@@ -1,6 +1,6 @@
 .product{
   width: 40%;
-  height: calc( 100vh - 380px );
+  height: calc( 100vh - 320px );
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -12,6 +12,7 @@
 
     a{
       display: block;
+      margin: 0 auto;
       width: 170px;
       height: 170px;
     }
