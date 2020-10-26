@@ -10,6 +10,8 @@ header{
     h1{
         line-height: 7rem;
         margin-left: 60px;
+        display: flex;
+        align-items: center;
         .header-logo{
             width: 10.7rem;
         }
