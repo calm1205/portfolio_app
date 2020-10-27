@@ -31,3 +31,7 @@
       .info
         .button#cart_btn{value: @product.id}
           ADD TO CART
+
+      .info
+        = link_to product_path, method: :delete do
+          delete
