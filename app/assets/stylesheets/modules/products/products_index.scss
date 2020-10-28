@@ -1,6 +1,6 @@
 .products{
     width: 40%;
-    height: calc( 100vh - 230px );
+    height: calc( 100vh - 330px );
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -10,10 +10,10 @@
         width: 33%;
         height: 200px;
         a{
-          display: block;
-          margin: 0 auto;
-          width: 170px;
-          height: 170px;
+            display: block;
+            margin: 0 auto;
+            width: 170px;
+            height: 170px;
         }
     }
     &__card a:hover{
@@ -27,8 +27,32 @@
     }
 
 
-    .pagination{
-        margin: 0 auto;
-        
+}
+
+
+.pagination{
+    margin: 0 auto;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+
+    span{
+        margin: 0 5px;
+    }
+    .page{
+        a{
+            color: royalblue;
+            text-decoration: none;
+        }
+    }
+    .current{
+        color: #1a1a1a;
+        font-weight: bold;
+    }
+    .first, .prev, .next, .last{
+        a{
+            color: royalblue;
+            text-decoration: none;
+        }
     }
 }
