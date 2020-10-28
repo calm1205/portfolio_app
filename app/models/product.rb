@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   # belongs_to :user
   # belongs_to :category
   # belongs_to :cart
+  has_many :cart_products, dependent: :destroy
+  has_many :carts, through: :cart_products
   with_options presence: true do
     validates :name
     validates :price

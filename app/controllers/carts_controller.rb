@@ -1,27 +1,21 @@
 class CartsController < ApplicationController
-  before_action :setup_cart_product
+  before_action :cart_create_or_find
   def index
-    @carts = current_user.cart_products
+    @products = @cart.products
   end
 
-  # def destroy
-  #   cart_product
-  #   @cart.destroy
-  #   redirect_to carts_path
-  # end
-
   def cart_in
-    if @cart_product.blank?
-      @cart_product = current_cart.cart_products.build(product_id: params[:productId], user_id: current_user.id)
-    end
-    if @cart_product.quantity.nil?
-      @cart_product.quantity = params[:quantity].to_i
+    product = Product.find(params[:product_id])
+    if @cart.products.include?(product)
+      @cart.update_sum_same_product_quantities(product.id, params[:quantity].to_i)
     else
-      @cart_product.quantity += params[:quantity].to_i
+      @cart_product = @cart.cart_products.build(product_id: params[:product_id], quantity: params[:quantity])
+      unless @cart_product.save
+        redirect_to root_path
+        flash[:notice] = "商品をカートに入れることができませんでした。"
+      end
     end
-    @cart_product.save!
     flash[:notice] = "商品をカートに入れました。"
-    # binding.pry
   end
 
   def destroy
@@ -33,15 +27,11 @@ class CartsController < ApplicationController
 
   private 
 
-  def setup_cart_product
-    @cart_product = current_cart.cart_products&.find_by(product_id: params[:productId], user_id: current_user.id)
+  def cart_create_or_find
+    if !current_user.cart
+      @cart = Cart.create(user_id: current_user.id)
+    else
+      @cart = Cart.find_by(user_id: current_user.id)
+    end
   end
-  # def set_cart
-  #   @cart = Cart.find(params[:id])
-  # end
-
-  # def cart_params
-  #   params.require(:cart).permit(:id).merge(user_id: current_user.id, product_id: params[:product_id], quantity: params[:quantity])
-  # end
-  
 end

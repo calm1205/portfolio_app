@@ -16,21 +16,29 @@ class PurchasesController < ApplicationController
       currency: 'jpy'  # 通貨の種類
     )
     # カート商品を購入履歴テーブルへ保存
-    @cart_products.each do |product|
-      @purchase = Purchase.new(user_id: product.user_id, product_id: product.product_id, quantity: product.quantity)
-      @purchase.save!
-    end
+    # @cart_products.each do |product|
+    #   @purchase = Purchase.new(user_id: current_user.id, product_id: product.product_id, quantity: product.quantity)
+    #   @purchase.save!
+    # end
+    # cart_productsを配列に変換して一括で購入履歴テーブルへ登録する
+    # Purchase.insert_all(@cart_products)
+    cart_products = @cart_products.map { |cart_product| { product_id: cart_product.product_id,
+                                                          user_id: current_user.id,
+                                                          quantity: cart_product.quantity,
+                                                          created_at: Time.now,
+                                                          updated_at: Time.now } }
+      
+    Purchase.insert_all(cart_products)
+
     # 購入履歴のテーブルへの登録が完了したら、カートを空にする
     @cart_products.destroy_all
     redirect_to root_path
-    # cart_productsを配列に変換して一括で購入履歴テーブルへ登録するつもりが出来ずにいる。
-    # Purchase.insert_all(@cart_products)
     
   end
   
   private
   def set_cart_products
-    @cart_products = current_user.cart_products
+    @cart_products = current_user.cart.cart_products
     @prices = @cart_products.map{ |c| c.product.price * c.quantity}
     @total_price = @prices.sum
   end

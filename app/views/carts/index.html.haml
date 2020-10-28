@@ -1,12 +1,12 @@
-- @carts.each do |cart_product|
-  = cart_product.product.name
-  = cart_product.product.price
+- @products.each do |product|
+  = product.name
+  = product.price
   円
-  = image_tag cart_product.product.image.variant(resize:'300x300')
+  = image_tag product.image.variant(resize:'300x300')
   .show-quantity
-    = cart_product.quantity
+    = product_quantities(@cart, product.id)
     個
-  = link_to cart_path(cart_product.id), method: :delete do
+  = link_to cart_path(@cart.id), method: :delete do
     カートから削除する
 
 .purchase_confirm
