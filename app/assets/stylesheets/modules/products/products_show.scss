@@ -1,17 +1,16 @@
 .product{
-    width: 40%;
+    width: 35%;
     margin: 0 auto;
 
-  
     &__box{
         img{
-            margin-top: 100px;
+            margin-top: 50px;
             width: 100%;
             border: 5px solid whitesmoke;
         }
 
         &__info{
-            margin-top: 100px;
+            margin-top: 50px;
 
             .info{
                 display: flex;
@@ -35,7 +34,7 @@
                 }
 
                 #cart_btn{
-                    margin: 50px 0;
+                    margin-bottom: 30px;
                 }
                 .button{
                     width: 100%;
