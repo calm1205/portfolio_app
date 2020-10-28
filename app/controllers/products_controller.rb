@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # before_action :set_cart_product, only: :cart_in
 
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(9)
   end
 
   def new
