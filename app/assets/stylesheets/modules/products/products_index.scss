@@ -41,17 +41,25 @@
     }
     .page{
         a{
-            color: royalblue;
+            display: inline-block;
+            width: 20px;
+            height: 19px;
+            padding: 3px 1px 0;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
             text-decoration: none;
         }
     }
     .current{
-        color: #1a1a1a;
+        padding: 5px 9px;
+        display: inline-block;
+        color: white;
+        background-color: #1a1a1a;
         font-weight: bold;
     }
     .first, .prev, .next, .last{
         a{
-            color: royalblue;
+            color:#1a1a1a;
             text-decoration: none;
         }
     }
