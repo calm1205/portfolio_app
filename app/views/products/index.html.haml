@@ -3,4 +3,7 @@
     .products__card{class: "#{'negative-margin' if index > 2}" }
       = link_to product_path(product) do
         = image_tag product.image.variant(resize:'170x170')
+
 = paginate(@products)
+- if paginate(@products).blank?
+  .blank

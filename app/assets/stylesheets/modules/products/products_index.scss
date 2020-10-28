@@ -1,6 +1,6 @@
 .products{
     width: 40%;
-    height: calc( 100vh - 330px );
+    height: calc( 100vh - 280px );
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +33,7 @@
 .pagination{
     margin: 0 auto;
     width: 400px;
-    height: 100px;
+    height: 50px;
     text-align: center;
 
     span{
@@ -63,4 +63,8 @@
             text-decoration: none;
         }
     }
+}
+
+.blank{
+    height: 50px;
 }
