@@ -1,14 +1,29 @@
-- @products.each do |product|
-  = product.name
-  = product.price
-  円
-  = image_tag product.image.variant(resize:'300x300')
-  .show-quantity
-    = product_quantities(@cart, product.id)
-    個
-  = link_to cart_path(@cart.id), method: :delete do
-    カートから削除する
+.cart
 
-.purchase_confirm
-  = link_to confirm_purchases_path do
-    購入確認ページへ
+  .cart__products
+    - @products.each do |product|
+      .cart__products__card
+        = link_to product_path product do
+          = image_tag product.image.variant(resize: '200x200')
+        .name
+          = product.name
+        .amount
+          %a(href="#")
+            .amount__puls
+              +
+          .amount__value
+            = product_quantities(@cart, product.id)
+          %a(href="#")
+            .amount__minus
+              = "-"
+        .price
+          ¥
+          = product.price
+        .close
+          = link_to cart_path(@cart.id), method: :delete do
+            %i.fas.fa-times
+
+  .payment
+    = link_to confirm_purchases_path do
+      .payment__btn
+        PAYMENT

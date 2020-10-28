@@ -16,21 +16,24 @@ header{
             width: 10.7rem;
         }
       }
-
-    .nav{
+      
+      .nav{
         margin-right: 60px;
         ul{
           display: flex; 
-
+          
           li{
-              font-size: 1.8rem;
-              margin-left: 18px;
-              line-height: 8rem;
-              font-family: 'Noto Sans JP', sans-serif;
-              a{
-                color: #1a1a1a;
-                text-decoration: none;
+            font-size: 1.8rem;
+            margin-left: 18px;
+            line-height: 8rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            a{
+              color: #1a1a1a;
+              text-decoration: none;
+              i{
+                line-height: 7rem;
               }
+            }
           }
           .btn{
               display: block;
