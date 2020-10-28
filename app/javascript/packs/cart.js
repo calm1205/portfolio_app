@@ -6,7 +6,7 @@ window.addEventListener('turbolinks:load', function(){
     // e.stopPropagation();
     const hash = {
       quantity: quantity_field.value,
-      productId: cart_btn.value,
+      product_id: cart_btn.getAttribute('value'),
       authenticity_token: document.getElementsByName('csrf-token')[0].content
     };
     const XHR = new XMLHttpRequest();
