@@ -54,6 +54,11 @@
               }
             }
         }
+
+        .confirmation{
+          box-shadow: none;
+          border: 5px solid whitesmoke;
+        }
     }
 
     .payment{
@@ -81,6 +86,31 @@
         background-color: white;
         border: 3px solid #1a1a1a;
         color: #1a1a1a;
+      }
     }
+    .purchase_confirmation{
+      display: flex;
+      justify-content: right;
+      margin: 50px 0 0 auto;
+
+      input{
+        font-weight: bold;
+        letter-spacing: 0.3rem;
+        color: white;
+        background-color: black;
+        height: 50px;
+        line-height: 50px;
+        width: 30rem;
+        text-align: center;
+        margin-left: auto;
+      }
+      input:hover{
+        cursor: pointer;
+        height: 50px;
+        line-height: 48px;
+        background-color: white;
+        border: 3px solid #1a1a1a;
+        color: #1a1a1a;
+      }
     }
 }
