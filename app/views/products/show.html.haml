@@ -1,6 +1,13 @@
 .product
   .product__box
-    = image_tag @product.image
+
+    .image
+      = image_tag @product.image
+      .like
+        -# - if likeをしていた時
+        %i.fas.fa-heart
+        -# - else likeをしていなかった時
+        %i.far.fa-heart
 
     .product__box__info
       .info
