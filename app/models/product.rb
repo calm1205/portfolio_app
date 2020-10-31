@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   # belongs_to :cart
   has_many :cart_products, dependent: :destroy
   has_many :carts, through: :cart_products
+  has_many :likes, dependent: :destroy
   with_options presence: true do
     validates :name
     validates :price

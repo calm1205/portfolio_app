@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_one :snsCredential, dependent: :destroy
   has_one :card, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   # validation
   # validates :password, format: { with: /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)[a-z\dA-Z]{8,128}+\z/ , message: "は大文字小文字の英数字を含む必要があります。" }, on: :create
@@ -38,6 +39,10 @@ class User < ApplicationRecord
     end
 
     return {user: user, sns_credential: sns_credential}
+  end
+
+  def have_already_liked?(product_id)
+    self.likes.exists?(product_id: product_id)
   end
 
 end
