@@ -4,10 +4,10 @@
     .image
       = image_tag @product.image
       .like
-        -# - if likeをしていた時
-        %i.fas.fa-heart
-        -# - else likeをしていなかった時
-        %i.far.fa-heart
+        - if current_user.have_already_liked?(@product.id)
+          %i.fas.fa-heart{value: Like.find_by(user_id: current_user.id, product_id: @product.id).id}
+        - else
+          %i.far.fa-heart
 
     .product__box__info
       .info
