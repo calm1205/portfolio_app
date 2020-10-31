@@ -15,12 +15,15 @@ Rails.application.routes.draw do
 
   root "products#index"
   
-  resources :products 
-    resources :carts do
-      collection do
-        post "cart_in", to: "carts#cart_in"
-      end
+  resources :products do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  resources :carts do
+    collection do
+      post "cart_in", to: "carts#cart_in"
     end
+  end
   
   resources :purchases do
     collection do
