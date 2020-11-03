@@ -16,6 +16,15 @@
         %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
       .nav
         %ul
+          -# 管理者ユーザページへの遷移。
+          - if user_signed_in?
+            - if current_user.admin
+              %li
+                = link_to console_products_path do
+                  product_console
+              %li
+                = link_to console_users_path do
+                  user_console
           %li
             = link_to "#" do
               story

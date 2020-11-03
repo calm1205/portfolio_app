@@ -1,0 +1,33 @@
+.uconsole
+  .uconsole__box
+    
+    %ul.title-box
+      %li
+      %li
+      %li.title
+        NICKNAME
+      %li.title
+        EMAIL
+      %li.title
+        MEMBER
+
+
+    .uconsole__box__table
+      - @users.each do |user|
+        
+        .list
+          = link_to edit_user_registration_path(user) do
+            .button
+              EDIT
+
+          = link_to user_path(user), method: :delete do
+            .button
+              DELETE
+
+          %ul
+            %li
+              = user.nickname
+            %li
+              = user.email
+            %li
+              = user.member

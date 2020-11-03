@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
+  get 'console/products', to: 'users#product_console'
+  get 'console/users',    to: 'users#user_console'
+  get 'console/finance',  to: 'users#finance_console'
+
   resources :carts, only: [:index, :destroy]
   resources :cards
 end
