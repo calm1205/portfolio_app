@@ -67,6 +67,7 @@ footer{
     width: 100vw;
     line-height: 10rem;
     background-color: #1a1a1a;
+    z-index: 9999;
     .footer-nav{
         display: flex;
         max-width: 768px;
