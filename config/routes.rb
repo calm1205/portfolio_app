@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   root "products#index"
-  
+  get  "products/search",  to: "products#search"
   resources :products do
     resources :likes, only: [:create, :destroy]
   end
