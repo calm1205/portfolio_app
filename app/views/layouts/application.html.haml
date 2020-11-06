@@ -55,20 +55,20 @@
         .close
           %i.fas.fa-times
 
-        .search__form
+        = form_with url: products_search_path, html: {class: "search__form"}, method: :get, local: true do |f|
           .search__form--name
-            %input{class: 'search-text', placeholder: 'type product name...' }
+            = f.text_field :keyword, class: 'search-text', placeholder: 'type product name...'
             .description
               検索したい商品の名前を入力してください。
 
           .search__form--price
-            %input{ type: 'number'}
+            = f.number_field :price_min
             〜
-            %input{ type: 'number'}
+            = f.number_field :price_max
             .description
               検索したい商品の価格の範囲を入力してください。
 
-          .submit
+          = f.button class: "submit" do
             SEARCH PRODUCT
 
 

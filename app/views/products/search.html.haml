@@ -1,0 +1,7 @@
+- if @products.present?
+  - @products.each do |product|
+    .products__card
+      = link_to product_path(product) do
+        = image_tag product.image.variant(resize:'170x170')
+      = product.name
+      = product.price

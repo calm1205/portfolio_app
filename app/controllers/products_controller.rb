@@ -49,9 +49,8 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @products = Product.search(params[:keyword],params[:price_min], params[:price_max])
   end
-
-  
 
   private
   
