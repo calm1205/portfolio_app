@@ -48,6 +48,30 @@
           %li
             = link_to carts_path do
               %i.fas.fa-shopping-cart
+          %li
+            %i.fas.fa-search
+
+      .search
+        .close
+          %i.fas.fa-times
+
+        .search__form
+          .search__form--name
+            %input{class: 'search-text', placeholder: 'type product name...' }
+            .description
+              検索したい商品の名前を入力してください。
+
+          .search__form--price
+            %input{ type: 'number'}
+            〜
+            %input{ type: 'number'}
+            .description
+              検索したい商品の価格の範囲を入力してください。
+
+          .submit
+            SEARCH PRODUCT
+
+
 
         .btn
           .bar.btn-top
