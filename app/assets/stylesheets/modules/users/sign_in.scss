@@ -3,6 +3,14 @@
   height: 100vh;
   position: relative;
 
+  i{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    font-size: 3rem;
+    color: black;
+  }
+
   &__box{
     position: absolute;
     top: 0;
