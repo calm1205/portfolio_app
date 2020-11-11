@@ -47,6 +47,10 @@ class ProductsController < ApplicationController
     product.destroy
   end
 
+  def search
+    @products = Product.search(params[:keyword],params[:price_min], params[:price_max])
+  end
+
   private
   
   def product_params

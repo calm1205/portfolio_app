@@ -48,6 +48,30 @@
           %li
             = link_to carts_path do
               %i.fas.fa-shopping-cart
+          %li
+            %i.fas.fa-search
+
+      .search
+        .close
+          %i.fas.fa-times
+
+        = form_with url: products_search_path, html: {class: "search__form"}, method: :get, local: true do |f|
+          .search__form--name
+            = f.text_field :keyword, class: 'search-text', placeholder: 'type product name...'
+            .description
+              検索したい商品の名前を入力してください。
+
+          .search__form--price
+            = f.number_field :price_min
+            〜
+            = f.number_field :price_max
+            .description
+              検索したい商品の価格の範囲を入力してください。
+
+          = f.button class: "submit" do
+            SEARCH PRODUCT
+
+
 
         .btn
           .bar.btn-top

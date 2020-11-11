@@ -2,6 +2,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  layout 'no_header_footer'
+
   def select
     session.delete("devise.sns_auth")
     @auth_text = "で登録する。"

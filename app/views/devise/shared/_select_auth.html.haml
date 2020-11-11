@@ -1,13 +1,21 @@
-- if controller.controller_name != "sessions"
-  = link_to new_user_registration_path do
-    .button.mail
-      %span.button__text
-        メールアドレス#{@auth_text}
+= link_to new_user_registration_path do
+  .button
+    .icon
+      %i.far.fa-envelope
+    %span
+      EMAIL
+
 = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
-  .google
-    %span.button__text
-      Google#{@auth_text}
+  .button
+    .icon
+      %i.fab.fa-google
+    %span
+      Google
+
+
 = link_to user_facebook_omniauth_authorize_path, method: :post do
-  .google
-    %span.button__text
-      Facebook#{@auth_text}
+  .button
+    .icon
+      %i.fab.fa-facebook-f
+    %span
+      Facebook

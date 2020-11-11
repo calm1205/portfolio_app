@@ -11,6 +11,7 @@ require("./cart.js")
 require("card")
 require("like")
 require("delete_check")
+require('search')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
