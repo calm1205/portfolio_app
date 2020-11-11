@@ -1,4 +1,18 @@
 .pconsole
+
+  .delete
+    .delete__close
+      .delete__close--button
+        %i.fas.fa-times
+    .delete__content
+      本当に削除しますか？
+    .delete__button
+      .cancel
+        キャンセル
+      .commit
+        削除
+
+
   .pconsole__box
     
     %ul.title-box
@@ -21,10 +35,8 @@
           = link_to edit_product_path(product) do
             .button
               EDIT
-
-          = link_to product_path(product), method: :delete do
-            .button
-              DELETE
+          .button.delete-button{'data-index': product.id}
+            DELETE
 
           %ul
             %li

@@ -10,6 +10,7 @@ require("channels")
 require("./cart.js")
 require("card")
 require("like")
+require("delete_check")
 require('search')
 
 
