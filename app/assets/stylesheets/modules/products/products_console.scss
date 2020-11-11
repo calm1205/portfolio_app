@@ -1,6 +1,56 @@
 .pconsole, .uconsole{
   height: calc( 100vh - 170px );
   display: flex;
+  position: relative;
+
+  .delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 35%;
+    height: 200px;
+    background-color: whitesmoke;
+    box-shadow: 10px 15px 20px #888888;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    opacity: 0;
+
+    &__close{
+      &--button{
+        font-size: 1.5rem;
+        width: 4rem;
+        height: 4rem;
+        margin-left: auto;
+        line-height: 4rem;
+        cursor: pointer;
+      }
+    }
+    &__content{
+      height: 120px;
+      line-height: 120px;
+    }
+    &__button{
+      display: flex;
+      height: 40px;
+      line-height: 40px;
+      border-top: 1px solid gray;
+      cursor: pointer;
+      .cancel{
+        width: calc( 50% - 1px );
+        border-right: 1px solid gray;
+      }
+      .commit{
+        width:  50%;
+      }
+    }
+  }
+  .show{
+    opacity: 1;
+    transition: 0.5s;
+  }
 
     &__box{
       width: 60%;
@@ -31,26 +81,22 @@
               display: flex;
               margin: 10px 0;
     
-                a{
-                  text-decoration: none;
+                .button{
                   margin: 25px 10px;
-                  .button{
-                    width: 80px;
-                    height: 50px;
-                    line-height: 50px;
-                    background-color: black;
-                    color: white;
-                    text-align: center;
-                    letter-spacing: 0.1rem;
-                  }
-                  .button:hover{
-                    width: calc( 80px - 6px );
-                    height: calc( 50px - 6px );
-                    line-height: calc( 50px - 6px );
-                    background-color: white;
-                    color: black;
-                    border: 3px solid black;
-                  }
+                  width: 80px;
+                  line-height: 50px;
+                  background-color: black;
+                  color: white;
+                  text-align: center;
+                  letter-spacing: 0.1rem;
+                  cursor: pointer;
+                }
+                .button:hover{
+                  width: calc( 80px - 6px );
+                  line-height: calc( 50px - 6px );
+                  background-color: white;
+                  color: black;
+                  border: 3px solid black;
                 }
     
                 ul{
