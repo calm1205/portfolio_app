@@ -1,1 +1,30 @@
-= render partial: "form"
+.pEdit
+  .pEdit__box
+    = form_with model: @product, local: true do |f|
+
+      .image
+        = image_tag @product.image
+
+        %label(for="image")
+          CLICK TO CHANGE IMAGE
+        = f.file_field :image, id: 'image'
+
+      .form
+        .form__title
+          NAME
+        .form__field
+          = f.text_field :name
+
+      .form
+        .form__title
+          DETAIL
+        .form__field
+          = f.text_area :detail
+
+      .form
+        .form__title
+          PRICE
+        .form__field
+          = f.text_field :price
+
+      = f.submit "EDIT COMMIT" ,class: "submit"
