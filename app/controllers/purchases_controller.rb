@@ -31,6 +31,9 @@ class PurchasesController < ApplicationController
     Purchase.insert_all(cart_products)
 
     # 購入履歴のテーブルへの登録が完了したら、カートを空にする
+    # 在庫の数字を引く
+    @cart_products.map {|product| @product = Product.find(product.product_id); @product.stock -= product.quantity; @product.save}
+    # カートの中身を削除
     @cart_products.destroy_all
     redirect_to root_path
     
