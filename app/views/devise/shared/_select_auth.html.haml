@@ -1,0 +1,21 @@
+= link_to new_user_registration_path do
+  .button
+    .icon
+      %i.far.fa-envelope
+    %span
+      EMAIL
+
+= link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+  .button
+    .icon
+      %i.fab.fa-google
+    %span
+      Google
+
+
+= link_to user_facebook_omniauth_authorize_path, method: :post do
+  .button
+    .icon
+      %i.fab.fa-facebook-f
+    %span
+      Facebook

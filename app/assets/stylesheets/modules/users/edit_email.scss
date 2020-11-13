@@ -1,0 +1,35 @@
+.editEmail{
+  width: 100%;
+  height: calc(100vh - 330px);
+  padding: 50px 0;
+
+  &__box{
+    width: 330px;
+    margin: 0 auto;
+
+    &--title{
+      font-size: 3rem;
+    }
+
+    .single{
+      margin-bottom: 30px;
+      input{
+        width: 300px;
+        height: 10px;
+        padding: 10px;
+      }
+    }
+
+
+    .button{
+      input{
+        background-color: #1a1a1a;
+        color: white;
+        width: 324px;
+        height: 40px;
+        cursor: pointer;
+        letter-spacing: 0.3rem;
+      }
+    }
+  }
+}

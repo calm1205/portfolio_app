@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   # before_action :admin_user?, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_product, only: [:show, :edit]
+  before_action :set_product, only: [:show, :edit, :cart_in]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  # before_action :set_cart_product, only: :cart_in
 
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(9)
   end
 
   def new
@@ -14,7 +15,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save! 
-      binding.pry
       redirect_to root_path
     else
       render :new
@@ -22,6 +22,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    # if @product&.cart
+    #   @cart = @product.cart
+    # else
+    #   @cart = Cart.new
+    # end
   end
 
   def edit
@@ -39,24 +45,26 @@ class ProductsController < ApplicationController
   def destroy
     product = Product.find(params[:id])
     product.destroy
-    redirect_to root_path
   end
 
+  def search
+    @products = Product.search(params[:keyword],params[:price_min], params[:price_max])
+  end
 
-
-  # private
+  private
   
   def product_params
     params.require(:product).permit(:name, :detail, :price, :image)
     # category_id user_idは実装完了後にパラメータに入れる
   end
+
   # def admin_user?
   #   redirect_to root_path, unless current_user.admin?
   #    end
   # end
 
+
   def set_product
     @product = Product.find(params[:id])
   end
-
 end

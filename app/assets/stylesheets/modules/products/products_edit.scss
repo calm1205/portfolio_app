@@ -1,0 +1,83 @@
+.pEdit{
+  height: calc( 100vh - 320px);
+  padding: 50px 0 100px;
+
+  &__box{
+    width: 35%;
+    margin: 0 auto;
+
+
+    .image{
+
+      img{
+        width: calc( 100% - 10px );
+        border: 5px solid lightgray;
+        border-bottom: none;
+      }
+      label{
+        display: block;
+        width: 100%;
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        color: white;
+        background-color: lightgray;
+        cursor: pointer;
+      }
+      label:hover{
+        background-color: white;
+        color: gray;
+        width: calc( 100% - 10px );
+        height: calc( 3rem - 5px);
+        line-height: calc( 3rem);
+        border: 5px solid lightgray;
+        border-top: none;
+      }
+      #image{
+        display: none;
+      }
+    }
+
+    .form{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      &__title{
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      &__field{
+        input{
+          width: 150px;
+          padding: 5px;
+          border: 1px solid lightgray;
+        }
+        textarea{
+          width: 150px;
+          padding: 5px;
+          border: 1px solid lightgray;
+        }
+      }
+    }
+
+    .submit{
+      margin-top: 20px;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      letter-spacing: 0.1rem;
+      border: none;
+      cursor: pointer;
+    }
+    .submit:hover{
+      line-height: calc( 50px - 6px );
+      background-color: white;
+      color: black;
+      border: 3px solid black;
+    }
+  }
+}

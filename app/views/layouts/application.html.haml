@@ -7,6 +7,83 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap")/
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
     = render 'layouts/notifications'
-    = yield
+    %header
+      = link_to root_path do
+        %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
+      .nav
+        %ul
+          -# 管理者ユーザページへの遷移。
+          - if user_signed_in?
+            - if current_user.admin
+              %li
+                = link_to console_products_path do
+                  product_console
+              %li
+                = link_to console_users_path do
+                  user_console
+          %li
+            = link_to "#" do
+              story
+          %li
+            = link_to "#" do
+              news
+          %li
+            - if user_signed_in?
+              = link_to destroy_user_session_path, method: :delete do
+                logout
+            - else
+              = link_to new_user_session_path do
+                login
+          %li
+            - if user_signed_in?
+              = link_to user_path(current_user) do
+                = current_user.nickname
+            -else
+              = link_to users_select_path do
+                sign_up
+          %li
+            = link_to carts_path do
+              %i.fas.fa-shopping-cart
+          %li
+            %i.fas.fa-search
+
+      .search
+        .close
+          %i.fas.fa-times
+
+        = form_with url: products_search_path, html: {class: "search__form"}, method: :get, local: true do |f|
+          .search__form--name
+            = f.text_field :keyword, class: 'search-text', placeholder: 'type product name...'
+            .description
+              検索したい商品の名前を入力してください。
+
+          .search__form--price
+            = f.number_field :price_min
+            〜
+            = f.number_field :price_max
+            .description
+              検索したい商品の価格の範囲を入力してください。
+
+          = f.button class: "submit" do
+            SEARCH PRODUCT
+
+
+
+        .btn
+          .bar.btn-top
+          .bar.btn-mid
+          .bar.btn-bottom
+    %main
+      = yield
+    %footer
+      %ul.footer-nav
+        %li.footer-list 会社概要
+        %li.footer-list 特定取引法表示
+        %li.footer-list 利用規約
+        %li.footer-list お問い合わせ
+        %li.footer-list Q＆A
+        %li.footer-list 採用情報

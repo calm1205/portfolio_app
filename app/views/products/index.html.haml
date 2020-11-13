@@ -1,31 +1,9 @@
-= link_to new_product_path do
-  %div 管理者用商品出品ページ
+.products
+  - @products.each_with_index do |product, index|
+    .products__card{class: "#{'negative-margin' if index > 2}" }
+      = link_to product_path(product) do
+        = image_tag product.image.variant(resize:'170x170')
 
-.login
-  = link_to new_user_session_path do
-    login
-
-.sign_up
-  = link_to new_user_registration_path do
-    sign_up
-
-.sign_out
-  = link_to destroy_user_session_path, method: :delete do
-    sign_out
-
-- if user_signed_in?
-  = "現在ログインしているユーザは#{current_user.email}です。"
-  .mypage
-    = link_to user_path(current_user) do
-      mypage
-- else
-  現在は未ログイン状態です。
-
-
-
-- @products.each do |product|
-  = link_to product_path(product) do
-    %div 商品の詳細について
-    = image_tag product.image.variant(resize:'300x300')
-    = product.name
-    = product.detail
+= paginate(@products)
+- if paginate(@products).blank?
+  .blank

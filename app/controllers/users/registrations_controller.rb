@@ -2,6 +2,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  layout 'no_header_footer'
+
+  def select
+    session.delete("devise.sns_auth")
+    @auth_text = "で登録する。"
+  end
+
   # GET /resource/sign_up
   def new
     if session["devise.sns_auth"]
@@ -16,14 +23,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+
     user = User.new(sign_up_params)
+    user.build_sns_credential(session["devise.sns_auth"]["sns_credential"]) if session["devise.sns_auth"]
 
     if user.invalid?
-      render :new and return
+      flash.now[:email] = user.errors[:email]
+      flash.now[:password] = user.errors[:password]
+      # render :new
+      redirect_to new_user_registration_path
+    else
+      session["devise.user_object"] = user.attributes
+      session["devise.user_object"][:password] = params[:user][:password]
+      # respond_with user, location: users_new_address_path
+      redirect_to users_new_address_path
     end
-    session["devise.user_object"] = user.attributes
-    session["devise.user_object"][:password] = params[:user][:password]
-    respond_with user, location: users_new_address_path
   end
 
   def edit
@@ -39,14 +53,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_address
-    user    = User.new(session["devise.user_object"])
     address = Address.new(address_params)
 
-    user.address = address
+    # SNS認証を経由してきたかで分岐
+    if session["devise.sns_auth"]
+      user                = User.new(session["devise.sns_auth"]["user"])
+      user.snsCredential  = SnsCredential.new(session["devise.sns_auth"]["sns_credential"])
+    else
+      user                = User.new(session["devise.user_object"])
+    end
+
+    # Addressが保存できなければrender
+    if address.invalid?
+      flash.now[:last_name]          = address.errors[:last_name]
+      flash.now[:first_name]         = address.errors[:first_name]
+      flash.now[:last_name_reading]  = address.errors[:last_name_reading]
+      flash.now[:first_name_reading] = address.errors[:first_name_reading]
+      flash.now[:postal_code]        = address.errors[:postal_code]
+      flash.now[:city]               = address.errors[:city]
+      flash.now[:house_number]       = address.errors[:house_number]
+      flash.now[:phone_number]       = address.errors[:phone_number]
+      render :new_address and return
+    end
     
+    user.address = address
+
     if user.save
-      sign_up(user.email, user)
-      redirect_to root_path , alert: @user.errors.full_messages and return
+      sign_in(user)
+      redirect_to root_path, notice: "ユーザ登録完了しました。" and return
     else
       render :new_address and return
     end

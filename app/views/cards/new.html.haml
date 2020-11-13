@@ -1,0 +1,18 @@
+.newCard
+  .newCard__box
+    .newCard__box--title
+      Registar Credit Card
+
+    = form_with model: @card ,id: "card_form", html:{name: "card_form"} do |f|
+      .single
+        = f.text_field :hoge,maxlength: 16, id: "card_number_form", placeholder: "1234 5678 1234 5678", value: "4242424242424242"
+      .double
+        = f.select :hoge, 1..12, {include_blank: "---", selected: 10}, id: "exp_month_form"
+        month / 
+        = f.select :hoge, [2020,2021,2022,2023,2024,2025], {include_blank: "---", selected: 2025}, id: "exp_year_form"
+        year
+      .single
+        = f.text_field :hoge, id: "cvc_form", placeholder: "カード背面４桁もしくは３桁の番号", value: "123"
+
+      .button
+        = f.submit "REGISTAR", class:"button back-red font-white", id: "card_submit"

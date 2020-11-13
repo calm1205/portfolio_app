@@ -1,0 +1,116 @@
+.cart{
+    min-height: calc( 100vh - 180px );
+
+    &__products{
+        width: 40%;
+        margin: 70px auto;
+
+        &__card{
+            width: 100%;
+            margin-top: 5rem;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 5px 5px 10px #888888;
+
+            img{
+              border-right: 5px solid whitesmoke;
+            }
+            .name{
+              line-height: 200px;
+              font-weight: bold;
+              font-size: 1.5rem;
+              margin-left: 3rem;
+              width: 10rem;
+            }
+            .amount{
+              display: flex;
+              align-items: center;
+              margin-left: 6em;
+
+              a{
+                display: block;
+                text-decoration: none;
+              }
+              &__puls, &__minus{
+                font-size: 1.5rem;
+                padding: 10px;
+              }
+              &__value{
+                font-size: 1.5rem;
+              }
+            }
+            .price{
+              display: flex;
+              align-items: center;
+              font-size: 1.5rem;
+              font-weight: bold;
+            }
+            .close{
+              i{
+                font-weight: bold;
+                font-size: 2rem;
+                padding: 10px;
+                color: black;
+              }
+            }
+        }
+
+        .confirmation{
+          box-shadow: none;
+          border: 5px solid whitesmoke;
+        }
+    }
+
+    .payment{
+      width: 40%;
+      margin: 0 auto 70px;
+
+      a{
+        text-decoration: none;
+      }
+      &__btn{
+        font-weight: bold;
+        letter-spacing: 0.3rem;
+        color: white;
+        background-color: black;
+        height: 50px;
+        line-height: 50px;
+        width: 30rem;
+        text-align: center;
+        margin-left: auto;
+      }
+      &__btn:hover{
+        cursor: pointer;
+        height: 44px;
+        line-height: 44px;
+        background-color: white;
+        border: 3px solid #1a1a1a;
+        color: #1a1a1a;
+      }
+    }
+    .purchase_confirmation{
+      display: flex;
+      justify-content: right;
+      margin: 50px 0 0 auto;
+
+      input{
+        font-weight: bold;
+        letter-spacing: 0.3rem;
+        color: white;
+        background-color: black;
+        height: 50px;
+        line-height: 50px;
+        width: 30rem;
+        text-align: center;
+        margin-left: auto;
+      }
+      input:hover{
+        cursor: pointer;
+        height: 50px;
+        line-height: 48px;
+        background-color: white;
+        border: 3px solid #1a1a1a;
+        color: #1a1a1a;
+      }
+    }
+}

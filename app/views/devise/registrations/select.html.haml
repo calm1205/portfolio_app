@@ -1,0 +1,16 @@
+.select
+
+  = link_to root_path do
+    %i.fas.fa-arrow-left
+
+  .select__box
+    .left
+      %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
+    .line
+
+    .right
+      .form
+        .form__title
+          SIGN UP
+        -# ↓メールアドレス、Facebook、Googleの3つのボタン
+        = render 'devise/shared/select_auth'

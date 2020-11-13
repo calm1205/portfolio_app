@@ -1,0 +1,120 @@
+.signIn, .select{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  .fa-arrow-left{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    font-size: 3rem;
+    color: black;
+  }
+
+  &__box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 701px;
+    height: 300px;
+    display: flex;
+
+
+    .left{
+      margin-right: 50px;
+      display: flex;
+      align-items: center;
+      img{
+        width: 300px;
+      }
+    }
+
+
+    .line{
+      width: 1px;
+      height: 300px;
+      background-color: #1a1a1a;
+    }
+
+    .right{
+      margin-left: 50px;
+      width: 350px;
+      display: flex;
+      align-items: center;
+
+      .form{
+
+        &__title{
+          font-size: 2rem;
+          margin-bottom: 5px;
+        }
+
+        &__email{
+          margin-bottom: 10px;
+          #user_email{
+            width: 200px;
+            height: 20px;
+            padding: 5px;
+          }
+        }
+
+        &__password{
+          margin-bottom: 30px;
+          #user_password{
+            width: 200px;
+            height: 20px;
+            padding: 5px;
+          }
+        }
+
+        &__button{
+          input{
+            background-color: #1a1a1a;
+            color: white;
+            width: 213px;
+            height: 40px;
+            cursor: pointer;
+          }
+        }
+
+        a{
+          text-decoration: none;
+          .button{
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: black;
+            color: white;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            .icon{
+              width: 50px;
+              height: 50px;
+            }
+            span{
+              margin-left: 30px;
+            }
+          }
+          .button:hover{
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+            width: calc( 200px - 6px);
+            height: calc( 50px - 6px);
+            line-height: 44px;
+            .icon{
+              width: 47px;
+              height: 44px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

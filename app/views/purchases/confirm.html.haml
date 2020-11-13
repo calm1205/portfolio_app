@@ -1,0 +1,22 @@
+.cart
+  .cart__products
+
+    = form_with model: @purchase ,url: purchase_purchases_path, local: true do |f| 
+      - @cart_products.each do |cart_product|
+        .cart__products__card.confirmation
+          = image_tag cart_product.product.image.variant(resize: '200x200')
+          .name
+            = cart_product.product.name
+          .amount
+            .amount__puls
+              x
+            .amount__value
+              = cart_product.quantity
+          .price
+            ¥
+            = cart_product.product.price
+          .close
+
+      .purchase_confirmation
+        = f.submit "BUY"
+  

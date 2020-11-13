@@ -1,3 +1,15 @@
-// @import "reset";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import "reset";
 @import "config/colors";
 @import "modules/flash";
+@import 'modules/users/*';
+@import 'modules/cards/*';
+@import 'modules/products/*';
+@import 'modules/carts/*';
+@import 'modules/likes/*';
+@import "header-footer";
+
+*{
+  text-decoration: none;
+}
