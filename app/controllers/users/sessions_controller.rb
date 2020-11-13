@@ -3,10 +3,13 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  layout 'no_header_footer'
+
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @auth_text = "でログイン"
+    super
+  end
 
   # POST /resource/sign_in
   # def create
