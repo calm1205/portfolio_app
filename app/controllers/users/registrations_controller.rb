@@ -4,7 +4,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
+    if session["devise.sns_auth"]
+      password = Devise.friendly_token[8,12] + "1aA"
+      session["devise.sns_auth"]["user"]["password"] = password
+      session["devise.sns_auth"]["user"]["password_confirmation"] = password
+      redirect_to users_new_address_path
+    else
+      super
+    end
   end
 
   # POST /resource

@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: "top"
+      last: "last"
+      previous: "pre"
+      next: "next"
+      truncate: "..."
