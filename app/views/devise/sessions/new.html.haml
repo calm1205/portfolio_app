@@ -12,7 +12,9 @@
       .form
         .form__title
           Sign in
+        = flash[:alert]
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          - console
           .form__email
             = f.email_field :email, autofocus: true, placeholder: ' type your email'
           .form__password

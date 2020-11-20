@@ -9,11 +9,16 @@ module ApplicationHelper
     unless flash[key].nil?
       unless flash[key].empty?
 
+        # エラーメッセージのHTMLを作成
         html = "<div class='flash-message'>"
-        flash[key].each do |message|
-          html += "<div class='#{key}'>#{reading}#{message}</div>"
+        if flash[key].kind_of?(String) #flashメッセージが1つだとString型になる。
+          html += "<div class='#{key}'>#{reading}#{message}</div></div>"
+        else #flashメッセージが複数あると配列になる。
+          flash[key].each do |message|
+            html += "<div class='#{key}'>#{reading}#{message}</div>"
+          end
+          html += "</div>"
         end
-        html += "</div>"
         
         return html.html_safe
       end
