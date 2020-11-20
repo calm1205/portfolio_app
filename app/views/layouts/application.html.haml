@@ -10,7 +10,6 @@
     %link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap")/
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
-    = render 'layouts/notifications'
     %header
       = link_to root_path do
         %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
@@ -25,6 +24,7 @@
               %li
                 = link_to console_users_path do
                   user_console
+
           %li
             = link_to "#" do
               story

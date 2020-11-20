@@ -28,9 +28,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user.build_sns_credential(session["devise.sns_auth"]["sns_credential"]) if session["devise.sns_auth"]
 
     if user.invalid?
-      flash.now[:email] = user.errors[:email]
-      flash.now[:password] = user.errors[:password]
-      # render :new
+      flash[:email] = user.errors[:email]
+      flash[:password] = user.errors[:password]
       redirect_to new_user_registration_path
     else
       session["devise.user_object"] = user.attributes
@@ -65,15 +64,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # Addressが保存できなければrender
     if address.invalid?
-      flash.now[:last_name]          = address.errors[:last_name]
-      flash.now[:first_name]         = address.errors[:first_name]
-      flash.now[:last_name_reading]  = address.errors[:last_name_reading]
-      flash.now[:first_name_reading] = address.errors[:first_name_reading]
-      flash.now[:postal_code]        = address.errors[:postal_code]
-      flash.now[:city]               = address.errors[:city]
-      flash.now[:house_number]       = address.errors[:house_number]
-      flash.now[:phone_number]       = address.errors[:phone_number]
-      render :new_address and return
+      flash[:last_name]          = address.errors[:last_name]
+      flash[:first_name]         = address.errors[:first_name]
+      flash[:last_name_reading]  = address.errors[:last_name_reading]
+      flash[:first_name_reading] = address.errors[:first_name_reading]
+      flash[:postal_code]        = address.errors[:postal_code]
+      flash[:city]               = address.errors[:city]
+      flash[:house_number]       = address.errors[:house_number]
+      flash[:phone_number]       = address.errors[:phone_number]
+      # render :new_address and return
+      redirect_to users_new_address_path and return
     end
     
     user.address = address
