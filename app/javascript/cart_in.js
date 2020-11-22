@@ -1,0 +1,37 @@
+import { sidepop } from './sidepop.js';
+document.addEventListener('turbolinks:load', function(){
+  const quantity_field = document.getElementById("product-quantity");
+  if (!quantity_field) return false;
+
+  const trigerBtn = document.querySelector('#aaa');
+  trigerBtn.addEventListener('click', ()=> {
+    debugger;
+    sidepop();
+    // console.log(1111)
+  });
+
+  const cart_btn = document.getElementById('cart_btn');
+  cart_btn.addEventListener("click", function(){
+    const hash = {
+      quantity: quantity_field.value,
+      product_id: cart_btn.getAttribute('value'),
+      authenticity_token: document.getElementsByName('csrf-token')[0].content
+    };
+    const XHR = new XMLHttpRequest();
+    const url = `/carts/cart_in`;
+    XHR.open("post", url, true);
+    XHR.setRequestHeader("Content-Type", "application/json");
+    const json = JSON.stringify(hash);
+    XHR.send(json);
+
+    XHR.onload = () => {
+      const response = JSON.parse(XHR.response);
+      if (response.result){
+        alert("商品をカートに入れました。")
+      }else{
+        alert("商品をカートに入れることができませんでした。")
+      }
+    }
+
+  })
+});
