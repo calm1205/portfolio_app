@@ -7,11 +7,10 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
   # association
-  has_one :cart
-  has_many :products
-  has_one :address, dependent: :destroy
-  has_one :snsCredential, dependent: :destroy
-  has_one :card, dependent: :destroy
+  has_one  :address, dependent: :destroy
+  has_one  :snsCredential, dependent: :destroy
+  has_one  :card, dependent: :destroy
+  has_one  :cart ,dependent: :destroy
   has_many :likes, dependent: :destroy
 
   # validation

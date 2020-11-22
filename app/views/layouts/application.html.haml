@@ -10,6 +10,7 @@
     %link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap")/
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
+
     %header
       = link_to root_path do
         %img.header-logo(src="/assets/eclogo.png" alt="ヘッダーに使うロゴ")/
@@ -71,17 +72,16 @@
           = f.button class: "submit" do
             SEARCH PRODUCT
 
-
-
         .btn
           .bar.btn-top
           .bar.btn-mid
           .bar.btn-bottom
+
     %main
       = yield
     %footer
       %ul.footer-nav
-        %li.footer-list 会社概要
+        %li.footer-list#aaa 会社概要
         %li.footer-list 特定取引法表示
         %li.footer-list 利用規約
         %li.footer-list お問い合わせ

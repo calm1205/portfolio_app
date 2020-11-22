@@ -1,29 +1,124 @@
 .cart
 
   .cart__products
-    - @products.each do |product|
-      .cart__products__card
-        = link_to product_path product do
-          = image_tag product.image.variant(resize: '200x200')
-        .name
-          = product.name
-        .amount
-          %a(href="#")
-            .amount__puls
-              +
-          .amount__value
-            = product_quantities(@cart, product.id)
-          %a(href="#")
-            .amount__minus
-              = "-"
-        .price
-          ¥
-          = product.price
-        .close
-          = link_to cart_path(@cart.id), method: :delete do
-            %i.fas.fa-times
+    .cart__products__header
+      .title
+        Shopping Cart
 
-  .payment
-    = link_to confirm_purchases_path do
-      .payment__btn
-        PAYMENT
+    %ul.cart__products__title
+      %li.cart__products__title--detail
+        PRODUCT DETAIL
+      %li
+        QUANTITY
+      %li
+        PRICE
+      %li
+        TOTAL
+
+    .cart__products__list
+
+      -if @cart_products.length == 0
+        .no-item
+          no item
+      - else
+        - @cart_products.each do |cart_product|
+          .cart__products__list--card{'data-index': cart_product.id}
+            .detail
+              = link_to product_path cart_product.product do
+                = image_tag cart_product.product.image.variant(resize: '150x150')
+              .detail__info
+                .detail__info--name
+                  = cart_product.product.name
+                .detail__info--detail
+                  = cart_product.product.detail
+            
+            .quantity
+              %label.quantity__minus
+                %i.fas.fa-minus
+              .quantity__value
+                = cart_product.quantity
+              %label.quantity__plus
+                %i.fas.fa-plus
+            .price
+              ¥
+              %span
+                = cart_product.product.price
+            .total-price
+              ¥
+              %span
+                = cart_product.product.price * cart_product.quantity
+            .drop
+              %i.fas.fa-times
+
+
+  .cart__summary
+    .cart__summary__header
+      .title
+        Order Summary
+
+    .cart__summary__content
+      .block.flex
+        .title
+          ITEMS
+        .quantity
+          = @cart_products.length
+
+      .block
+        .title
+          SHIPPING
+        .shipping
+          %select
+            %option(value="0")
+              着払い
+            %option(value="1")
+              送料込み
+
+      .block
+        .title
+          ADDRESS
+        .user_name
+          = @address.first_name
+          = @address.last_name
+        .postal_code
+          = @address.postal_code
+
+        .address
+          = @address.prefecture.name
+          = @address.city
+          = @address.house_number
+          = @address.building
+
+      .block
+        .title
+          CARD
+        .card_number
+          **** **** ****
+          %span
+            = @card.last4
+        .card_exp
+          = "#{@card.exp_year} / #{@card.exp_month}"
+
+      .bottom
+        .block.flex
+          .title
+            TOTAL
+          .total_price
+            ¥
+            %span
+              = @total_price
+
+
+        .cart__summary__btn#payment
+          PAYMENT
+
+  .pay
+    .pay__close
+      .pay__close--button
+        %i.fas.fa-times
+    .pay__content
+      本当に購入しますか？
+    .pay__button
+      .cancel
+        キャンセル
+      .commit
+        購入

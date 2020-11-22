@@ -1,116 +1,226 @@
 .cart{
-    min-height: calc( 100vh - 180px );
+    height: calc( 100vh - 170px );
+    display: flex;
+    position: relative;
 
     &__products{
-        width: 40%;
-        margin: 70px auto;
+        width: 60%;
+        padding: 50px;
+        z-index: 1;
 
-        &__card{
-            width: 100%;
-            margin-top: 5rem;
-            display: flex;
-            justify-content: space-between;
-            box-shadow: 5px 5px 10px #888888;
+        &__header{
+          font-size: 2rem;
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 30px;
+          border-bottom: 2px solid lightgray;
+        }
 
-            img{
-              border-right: 5px solid whitesmoke;
-            }
-            .name{
-              line-height: 200px;
-              font-weight: bold;
-              font-size: 1.5rem;
-              margin-left: 3rem;
-              width: 10rem;
-            }
-            .amount{
+        &__title{
+          display: flex;
+          justify-content: space-between;
+          padding: 30px 50px 5px 0px;
+          font-size: 1.5rem;
+          
+          &--detail{
+            width: 40%;
+            text-align: center;
+          }
+        }
+        
+        &__list{
+          overflow-y: scroll;
+          height: calc( 100vh - 180px - 230px );
+          padding: 0 10px;
+
+          .no-item{
+            text-align: center;
+            margin: 200px;
+            font-size: 2rem;
+            font-weight: bold;
+          }
+          &--card{
+              width: 100%;
+              margin: 3rem 0 ;
+              padding-right: 30px;
               display: flex;
-              align-items: center;
-              margin-left: 6em;
+              justify-content: space-between;
+              box-shadow: 5px 5px 10px #888888;
+              position: relative;
+  
+              .detail{
+                width: 40%;
+                display: flex;
+                img{
+                  border-right: 5px solid whitesmoke;
+                }
+                &__info{
+                  margin-left: 2rem;
+                  &--name{
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    width: 10rem;
+                    height: 70px;
+                    line-height: 70px;
+                  }
+                  &--detail{
+                    height: 80px;
+                    display: flex;
+                    align-items: center;
+                    width: 100px;
+                    overflow: hidden;
+                  }
+                }
+              }
 
-              a{
-                display: block;
-                text-decoration: none;
+              .quantity{
+                display: flex;
+                align-items: center;
+                &__plus, &__minus{
+                  font-size: 1.5rem;
+                  padding: 10px;
+                  cursor: pointer;
+                }
+                &__value{
+                  font-size: 1.5rem;
+                }
               }
-              &__puls, &__minus{
+              .price, .total-price{
+                display: flex;
+                align-items: center;
                 font-size: 1.5rem;
-                padding: 10px;
+                white-space: nowrap;
               }
-              &__value{
-                font-size: 1.5rem;
+              .drop{
+                position: absolute;
+                top: 0;
+                left: 0;
+                cursor: pointer;
+                i{
+                  font-weight: bold;
+                  font-size: 2rem;
+                  padding: 10px;
+                  color: black;
+                }
               }
-            }
-            .price{
-              display: flex;
-              align-items: center;
-              font-size: 1.5rem;
-              font-weight: bold;
-            }
-            .close{
-              i{
-                font-weight: bold;
-                font-size: 2rem;
-                padding: 10px;
-                color: black;
-              }
-            }
+          }
         }
 
         .confirmation{
           box-shadow: none;
           border: 5px solid whitesmoke;
         }
-    }
-
-    .payment{
-      width: 40%;
-      margin: 0 auto 70px;
-
-      a{
-        text-decoration: none;
       }
+    &__summary{
+      width: 40%;
+      padding: 50px;
+      background-color: whitesmoke;
+      z-index: 1;
+
+      &__header{
+        padding-bottom: 30px;
+        border-bottom: 2px solid lightgray;
+        .title{
+          font-size: 2rem;
+          font-weight: bold;
+        }
+      }
+
+      &__content{
+        position: relative;
+        height: calc( 100vh - 180px - 190px);
+        .block{
+          margin-top: 30px;
+          font-size: 1.2rem;
+          .quantity, .total_price{
+            font-size: 1.5rem;
+          }
+        }
+        .title{
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+        .shipping{
+          select{
+            width: 100%;
+            padding: 10px;
+            border: 1px;
+            margin-top: 10px;
+          }
+        }
+        .bottom{
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        }
+      }
+
       &__btn{
+        width: 100%;
         font-weight: bold;
         letter-spacing: 0.3rem;
         color: white;
         background-color: black;
         height: 50px;
         line-height: 50px;
-        width: 30rem;
         text-align: center;
-        margin-left: auto;
       }
       &__btn:hover{
         cursor: pointer;
-        height: 44px;
         line-height: 44px;
         background-color: white;
         border: 3px solid #1a1a1a;
         color: #1a1a1a;
       }
     }
-    .purchase_confirmation{
-      display: flex;
-      justify-content: right;
-      margin: 50px 0 0 auto;
 
-      input{
-        font-weight: bold;
-        letter-spacing: 0.3rem;
-        color: white;
-        background-color: black;
-        height: 50px;
-        line-height: 50px;
-        width: 30rem;
-        text-align: center;
-        margin-left: auto;
+    .pay{
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: 35%;
+      height: 200px;
+      background-color: whitesmoke;
+      box-shadow: 10px 15px 20px #888888;
+      text-align: center;
+      letter-spacing: 0.1rem;
+      opacity: 0;
+  
+      &__close{
+        &--button{
+          font-size: 1.5rem;
+          width: 4rem;
+          height: 4rem;
+          margin-left: auto;
+          line-height: 4rem;
+          cursor: pointer;
+        }
       }
-      input:hover{
+      &__content{
+        height: 120px;
+        line-height: 120px;
+      }
+      &__button{
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        border-top: 1px solid gray;
         cursor: pointer;
-        height: 50px;
-        line-height: 48px;
-        background-color: white;
-        border: 3px solid #1a1a1a;
-        color: #1a1a1a;
+        .cancel{
+          width: calc( 50% - 1px );
+          border-right: 1px solid gray;
+        }
+        .commit{
+          width:  50%;
+        }
       }
+    }
+    .show{
+      opacity: 1;
+      transition: 0.5s;
     }
 }

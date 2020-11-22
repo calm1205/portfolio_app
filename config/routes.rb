@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
@@ -13,22 +13,24 @@ Rails.application.routes.draw do
     get   'users/select',         to: 'users/registrations#select'
   end
 
-  root "products#index"
-  get  "products/search",  to: "products#search"
+  root 'products#index'
+  get  'products/search',  to: 'products#search'
   resources :products do
     resources :likes, only: [:create, :destroy]
   end
 
   resources :carts do
     collection do
-      post "cart_in", to: "carts#cart_in"
+      post 'cart_in',       to: 'carts#cart_in'
+      post 'quantity_edit', to: 'carts#quantity_edit'
+      get  'drop',          to: 'carts#drop'
     end
   end
   
   resources :purchases do
     collection do
-      get "confirm", to: 'purchases#confirm'
-      post "purchase", to: "purchases#purchase"
+      get 'confirm', to: 'purchases#confirm'
+      post 'purchase', to: 'purchases#purchase'
     end
   end
 
