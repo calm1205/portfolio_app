@@ -3,14 +3,16 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-require("./cart.js")
-require("card")
-require("like")
-require("delete_check")
+require('@rails/ujs').start()
+require('turbolinks').start()
+require('@rails/activestorage').start()
+require('channels')
+require('cart_in')
+require('cart_edit')
+require('cart_check')
+require('card')
+require('like')
+require('delete_check')
 require('search')
 
 
