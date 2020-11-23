@@ -1,8 +1,9 @@
+import { sidepop } from './sidepop.js';
 document.addEventListener('turbolinks:load', () => {
     if (!document.location.pathname.match(/\/products\/\d+/)) return false;
 
 
-    DOMstrings = {
+    const DOMstrings = {
         likeEl:    ".like",
         productEl: "#cart_btn",
         HeartEl:   ".far.fa-heart",
@@ -10,7 +11,7 @@ document.addEventListener('turbolinks:load', () => {
     }
 
 
-    likesFunction = {
+    const likesFunction = {
         createFunction: (e) => {
             e.stopPropagation();
 
@@ -36,13 +37,12 @@ document.addEventListener('turbolinks:load', () => {
                     const likeEl = document.querySelector(DOMstrings.likeEl);
                     likeEl.insertAdjacentHTML('afterbegin', `<i class="fas fa-heart" value="${XHR.response.id}"></i>`)
                     document.querySelector(DOMstrings.likedEl).addEventListener('click', likesFunction.deleteFunction);
+                    sidepop('いいねしました。');
             }
             
         },
         deleteFunction: (e) => {
-            console.log(e);
             const delLikedId = document.querySelector(DOMstrings.likedEl).getAttribute('value');
-            console.log(delLikedId);
 
             const XHR = new XMLHttpRequest();
 
@@ -64,6 +64,7 @@ document.addEventListener('turbolinks:load', () => {
                 const likeEl = document.querySelector(DOMstrings.likeEl);
                 likeEl.insertAdjacentHTML('afterbegin', `<i class="far fa-heart"></i>`);
                 document.querySelector(DOMstrings.HeartEl).addEventListener('click', likesFunction.createFunction);
+                sidepop('いいねを解除しました。');
             }
         }
     }
