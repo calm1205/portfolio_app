@@ -1,5 +1,13 @@
-// ポップアップ表示の関数
-// sidepop(表示するテキスト)
+// ========= ポップアップ表示の関数 ============
+
+// 使い方
+// ①使いたいjsファイルの一番最初でimpot（以下を追記）
+// import { sidepop } from './sidepop.js';
+
+// ② sidepop('表示するテキスト'); で実行可能
+
+// =========================================
+
 export function sidepop(text){
   const popUps     = document.querySelectorAll('.sidepop');
   const popUpCount = popUps.length;
