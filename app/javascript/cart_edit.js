@@ -1,3 +1,4 @@
+import { sidepop } from './sidepop.js';
 window.addEventListener('turbolinks:load', function(){
   const paymentBtn = document.getElementById("payment");
   if (!paymentBtn) return false;
@@ -19,7 +20,7 @@ window.addEventListener('turbolinks:load', function(){
         if (response.result){
           dropBtn.parentNode.remove();
           adjustment();
-          alert("商品をカートから削除しました。")
+          sidepop("商品をカートから削除しました。")
         }else{
           alert("商品をカートから削除に失敗しました。")
         }
@@ -63,7 +64,6 @@ window.addEventListener('turbolinks:load', function(){
       XHR.onload = () => {
         const response = JSON.parse(XHR.response);
         if (response.result){
-          alert("カートの商品数を変更しました。")
           const quantityDOM = Btn.parentNode.querySelector('.quantity__value');
           if (upOrDown == 'plus'){
             quantityDOM.innerText = Number(quantityDOM.innerText) + 1;

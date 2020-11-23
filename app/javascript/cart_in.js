@@ -3,13 +3,6 @@ document.addEventListener('turbolinks:load', function(){
   const quantity_field = document.getElementById("product-quantity");
   if (!quantity_field) return false;
 
-  const trigerBtn = document.querySelector('#aaa');
-  trigerBtn.addEventListener('click', ()=> {
-    debugger;
-    sidepop();
-    // console.log(1111)
-  });
-
   const cart_btn = document.getElementById('cart_btn');
   cart_btn.addEventListener("click", function(){
     const hash = {
@@ -27,9 +20,9 @@ document.addEventListener('turbolinks:load', function(){
     XHR.onload = () => {
       const response = JSON.parse(XHR.response);
       if (response.result){
-        alert("商品をカートに入れました。")
+        sidepop('商品をカートに入れることができました。');
       }else{
-        alert("商品をカートに入れることができませんでした。")
+        alert("商品をカートに入れることができませんでした。");
       }
     }
 
