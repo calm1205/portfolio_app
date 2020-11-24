@@ -30,7 +30,6 @@ export function sidepop(text){
 function sidedrop(target){
   target.classList.add('unshown');
 }
-
 function deletepop(target){
   target.remove();
 }
