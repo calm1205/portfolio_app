@@ -3,11 +3,8 @@ document.addEventListener('turbolinks:load', function(){
   const quantity_field = document.getElementById("product-quantity");
   if (!quantity_field) return false;
 
-  
-  
   const cart_btn = document.getElementById('cart_btn');
   cart_btn.addEventListener("click", function(){
-    setTimeout( console.log(222), 4000);
     const hash = {
       quantity: quantity_field.value,
       product_id: cart_btn.getAttribute('value'),
