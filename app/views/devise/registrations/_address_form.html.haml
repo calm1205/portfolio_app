@@ -1,8 +1,15 @@
 .registarAddress
-  .registarAddress__box
 
+  - if action == 'Edit'
+    = link_to user_path(current_user) do
+      %i.fas.fa-arrow-left
+  - else
+    = link_to users_select_path do
+      %i.fas.fa-arrow-left
+
+  .registarAddress__box
     .registarAddress__box--title
-      Registar Address
+      = "#{action} Address"
 
     = form_with model: @address, url: users_create_address_path ,id: 'new_address', class: 'new_address', local: true do |f|
       .double

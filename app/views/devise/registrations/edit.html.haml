@@ -1,12 +1,16 @@
 .editEmail
+
+  = link_to user_path(current_user) do
+    %i.fas.fa-arrow-left
+
   .editEmail__box
     .editEmail__box--title
       Edit Email
 
     = form_with model: current_user, url: user_registration_path do |f|
       .single
-        = f.text_field :nickname
+        = f.text_field :nickname, placeholder: 'type your new nickname'
       .single
-        = f.email_field :email
+        = f.email_field :email, placeholder: 'type your new email'
       .button
         = f.submit "EDIT EMAIL"

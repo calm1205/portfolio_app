@@ -1,41 +1,39 @@
 .product
-  .product__box
+  .image
+    = image_tag @product.image
+    - if user_signed_in?
+      .like
+        - if current_user.have_already_liked?(@product.id)
+          %i.fas.fa-heart{value: Like.find_by(user_id: current_user.id, product_id: @product.id).id}
+        - else
+          %i.far.fa-heart
 
-    .image
-      = image_tag @product.image
-      - if user_signed_in?
-        .like
-          - if current_user.have_already_liked?(@product.id)
-            %i.fas.fa-heart{value: Like.find_by(user_id: current_user.id, product_id: @product.id).id}
-          - else
-            %i.far.fa-heart
+  .product__info
+    .info
+      .info__title
+        NAME
+      .info__content
+        = @product.name
+    
+    .info
+      .info__title
+        DESCRIPTION
+      .info__content
+        = @product.detail
+        sampleTextsampleTextsampleTextsampleTextsampleTextmpleTextampleTextsampleText
+    
+    .info
+      .info__title
+        PRICE
+      .info__content
+        = @product.price
 
-    .product__box__info
-      .info
-        .info__title
-          NAME
-        .info__content
-          = @product.name
-      
-      .info
-        .info__title
-          DESCRIPTION
-        .info__content
-          = @product.detail
-          sampleTextsampleTextsampleTextsampleTextsampleTextmpleTextampleTextsampleText
-      
-      .info
-        .info__title
-          PRICE
-        .info__content
-          = @product.price
+    .info
+      .info__title
+        HOW MANY ?
+      .info__content
+        = select_tag(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
 
-      .info
-        .info__title
-          HOW MANY ?
-        .info__content
-          = select_tag(:quantity, options_for_select((1..9).to_a), id: "product-quantity")
-
-      .info
-        .button#cart_btn{value: @product.id}
-          ADD TO CART
+    .info
+      .button#cart_btn{value: @product.id}
+        ADD TO CART

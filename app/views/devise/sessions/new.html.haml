@@ -14,10 +14,9 @@
           Sign in
         = flash[:alert]
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          - console
-          .form__email
+          .single
             = f.email_field :email, autofocus: true, placeholder: ' type your email'
-          .form__password
+          .single
             = f.password_field :password, autocomplete: "off", placeholder: ' type your password'
           .form__button
             = f.submit "Sign in"
