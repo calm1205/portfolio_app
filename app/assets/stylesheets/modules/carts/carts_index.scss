@@ -46,7 +46,7 @@
               padding-right: 30px;
               display: flex;
               justify-content: space-between;
-              box-shadow: 5px 5px 10px #888888;
+              box-shadow: 5px 5px 10px $shadow;
               position: relative;
   
               .detail{
@@ -101,7 +101,7 @@
                   font-weight: bold;
                   font-size: 2rem;
                   padding: 10px;
-                  color: black;
+                  color:$black;
                 }
               }
           }
@@ -158,37 +158,15 @@
 
       &__btn{
         width: 100%;
-        font-weight: bold;
-        letter-spacing: 0.3rem;
-        color: white;
-        background-color: black;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
+        @include btn;
       }
       &__btn:hover{
-        cursor: pointer;
-        line-height: 44px;
-        background-color: white;
-        border: 3px solid $black;
-        color: $black;
+        @include btn_hover;
       }
     }
 
     .pay{
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      margin: auto;
-      width: 35%;
-      height: 200px;
-      background-color: whitesmoke;
-      box-shadow: 10px 15px 20px #888888;
-      text-align: center;
-      letter-spacing: 0.1rem;
-      opacity: 0;
+      @include popup;
   
       &__close{
         &--button{
