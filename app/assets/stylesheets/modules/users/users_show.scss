@@ -32,16 +32,12 @@
     .edit{
       margin-bottom: 100px;
       a{
-        text-decoration: none;
-        
         .button{
           width: 500px;
-          height: 50px;
-          background-color: #1a1a1a;
-          color: white;
-          text-align: center;
-          line-height: 50px;
-          letter-spacing: 0.3rem;
+          @include btn;
+        }
+        .button:hover{
+          @include btn_hover;
         }
       }
     }

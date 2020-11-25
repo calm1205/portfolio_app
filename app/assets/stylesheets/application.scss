@@ -1,22 +1,17 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import "reset";
-@import "config/colors";
+@import 'config/reset';
+@import 'config/colors';
+@import 'config/mixin';
 @import 'modules/users/*';
 @import 'modules/cards/*';
 @import 'modules/products/*';
 @import 'modules/carts/*';
-@import 'modules/likes/*';
-@import "header-footer";
+@import 'header-footer';
 
 *{
   box-sizing: border-box;
   text-decoration: none;
-}
-
-.flex{
-  display: flex;
-  justify-content: space-between;
 }
 
 @keyframes sidepop {

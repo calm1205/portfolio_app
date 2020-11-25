@@ -1,18 +1,22 @@
 .signUp
+
+  = link_to users_select_path do
+    %i.fas.fa-arrow-left
+
   .signUp__box
     .signUp__box__title
       Create Account
     = form_with model: @user, url: user_registration_path , local: true do |f|
-      .nikname
+      .single
         = f.text_field :nickname, placeholder: 'type your nickname'
-      .email
+      .single
         = display_validation_errors("email","email")
         = f.email_field :email, placeholder: ' type your email'
       - unless @sns_auth
-        .password
+        .single
           = display_validation_errors("password","password")
           = f.password_field :password, autocomplete: "off",value: "Passw0rd"
-        .password
+        .single
           = f.password_field :password_confirmation, autocomplete: "off",value: "Passw0rd"
         .button
-          = f.submit "Registar Address"
+          = f.submit "NEXT"

@@ -29,8 +29,8 @@ header{
             line-height: 7rem;
             font-family: 'Noto Sans JP', sans-serif;
             a{
-              color: #1a1a1a;
-              text-decoration: none;
+              color: $black;
+              
               i{
                 line-height: 7rem;
               }
@@ -42,7 +42,7 @@ header{
               height: 22;
               position: relative;
               .bar{
-                border-color: #1a1a1a;
+                border-color: $black;
                 transform: translate(-50% -50%);
               }
               .btn-top{
@@ -66,7 +66,7 @@ footer{
     height: 10rem;
     width: 100vw;
     line-height: 10rem;
-    background-color: #1a1a1a;
+    background-color: $black;
     z-index: 9999;
     .footer-nav{
         display: flex;

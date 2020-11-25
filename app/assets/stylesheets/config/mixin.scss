@@ -1,0 +1,74 @@
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin content_height {
+  height: calc( 100vh - 170px );
+}
+@mixin content_width {
+  max-width: 700px;
+  width: calc( 100vw - 100px );
+}
+
+@mixin btn {
+  height: 50px;
+  background-color: $black;
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 0.3rem;
+}
+@mixin btn_hover{
+  cursor: pointer;
+  height: 50px;
+  line-height: 44px;
+  background-color: white;
+  border: 3px solid $black;
+  color: $black;
+}
+
+// 戻るボタン
+@mixin back{
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+  font-size: 3rem;
+  color: black;
+}
+.fa-arrow-left{
+  @include back;
+}
+
+@mixin position_center{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+// form
+.single{
+  margin-bottom: 15px;
+  input{
+    width: 100%;
+    padding: 10px;
+  }
+  select{
+    width: 100%;
+    padding: 15px 10px;
+  }
+}
+.double{
+  margin-bottom: 15px;
+  display: flex;
+  input{
+    width: 50%;
+    padding: 10px;
+    margin-right: -1px;
+  }
+}

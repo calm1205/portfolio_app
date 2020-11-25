@@ -21,10 +21,10 @@
             - if current_user.admin
               %li
                 = link_to console_products_path do
-                  product_console
+                  products
               %li
                 = link_to console_users_path do
-                  user_console
+                  users
 
           %li
             = link_to "#" do
@@ -45,7 +45,7 @@
                 = current_user.nickname
             -else
               = link_to users_select_path do
-                sign_up
+                sign up
           %li
             = link_to carts_path do
               %i.fas.fa-shopping-cart
@@ -70,7 +70,7 @@
               検索したい商品の価格の範囲を入力してください。
 
           = f.button class: "submit" do
-            SEARCH PRODUCT
+            Search Product
 
         .btn
           .bar.btn-top

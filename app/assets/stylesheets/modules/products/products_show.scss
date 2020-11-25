@@ -1,63 +1,64 @@
 .product{
-    width: 35%;
+    @include content_height;
+    @include content_width;
     margin: 0 auto;
 
-    &__box{
+    .image{
+        width: 300px;
+        margin: 0 auto;
+        position: relative;
         img{
-            margin-top: 50px;
-            width: 100%;
+            width: 300px;
+            margin: 50px 0;
             border: 5px solid whitesmoke;
         }
+        .like{
+            position: absolute;
+            right: 15px;
+            bottom: 60px;
+            cursor: pointer;
+            i{
+                font-size: 1.5rem;
+            }
+            i.fas{
+                color: red;
+            }
+        }
+    }
 
-        &__info{
-            margin-top: 50px;
+    &__info{
+        max-width: 500px;
+        margin: 0 auto;
+        .info{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
 
-            .info{
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 25px;
+            &__title{
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+            &__content{
+                width: 150px;
+                word-wrap: break-word;
 
-                &__title{
-                    font-weight: bold;
-                    font-size: 1.2rem;
-                }
-                &__content{
+                select{
                     width: 150px;
-                    word-wrap: break-word;
+                    height: 30px;
+                    padding: 5px;
+                    border: 1px solid lightgray;
+                }
+            }
 
-                    select{
-                        width: 150px;
-                        height: 30px;
-                        padding: 5px;
-                        border: 1px solid lightgray;
-                    }
-                }
-
-                #cart_btn{
-                    margin-bottom: 30px;
-                }
-                .button{
-                    width: 100%;
-                    height: 50px;
-                    background-color: #1a1a1a;
-                    color: white;
-                    font-weight: bold;
-                    text-align: center;
-                    line-height: 50px;
-                    letter-spacing: 0.3rem;
-
-                    a{
-                        color: white;
-                    }
-                }
-                .button:hover{
-                    cursor: pointer;
-                    height: 50px;
-                    line-height: 44px;
-                    background-color: white;
-                    border: 3px solid #1a1a1a;
-                    color: #1a1a1a;
-                }
+            #cart_btn{
+                margin-bottom: 30px;
+            }
+            .button{
+                width: 100%;
+                @include btn;
+            }
+            .button:hover{
+                @include btn_hover;
             }
         }
     }

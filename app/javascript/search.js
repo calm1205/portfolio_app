@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('turbolinks:load', () => {
   if ( !document.querySelector(`.fa-search`)) { return false; }
 
   const searchBtn = document.querySelector(`.fa-search`);

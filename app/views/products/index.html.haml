@@ -1,9 +1,11 @@
 .products
-  - @products.each_with_index do |product, index|
-    .products__card{class: "#{'negative-margin' if index > 2}" }
-      = link_to product_path(product) do
-        = image_tag product.image.variant(resize:'170x170')
-
-= paginate(@products)
-- if paginate(@products).blank?
-  .blank
+  - 1.upto 3 do |shelf_index|
+    .products__shelf.flex
+      - @products.each.with_index(1) do |product, product_index|
+        - if product_index.between?(shelf_index*3 - 2, shelf_index * 3)
+          = link_to product_path(product) do
+            = image_tag product.image
+            
+  = paginate(@products)
+  - if paginate(@products).blank?
+    .blank
