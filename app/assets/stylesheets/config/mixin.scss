@@ -30,13 +30,13 @@
   color: $black;
 }
 
-// 戻るボタン
+// ←戻るボタン
 @mixin back{
   position: absolute;
   top: 5rem;
   left: 5rem;
   font-size: 3rem;
-  color: black;
+  color:$black;
 }
 .fa-arrow-left{
   @include back;
@@ -71,4 +71,16 @@
     padding: 10px;
     margin-right: -1px;
   }
+}
+
+@mixin popup{
+  @include position_center;
+  width: 35%;
+  height: 200px;
+  background-color: whitesmoke;
+  box-shadow: 10px 15px 20px $shadow;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  opacity: 0;
+  z-index: 9999;
 }

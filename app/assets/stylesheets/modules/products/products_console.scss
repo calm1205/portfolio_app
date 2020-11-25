@@ -4,19 +4,7 @@
   position: relative;
 
   .delete{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    width: 35%;
-    height: 200px;
-    background-color: whitesmoke;
-    box-shadow: 10px 15px 20px #888888;
-    text-align: center;
-    letter-spacing: 0.1rem;
-    opacity: 0;
+    @include popup;
 
     &__close{
       &--button{
@@ -84,24 +72,14 @@
                 .button{
                   margin: 25px 10px;
                   width: 80px;
-                  line-height: 50px;
-                  background-color: black;
-                  color: white;
-                  text-align: center;
-                  letter-spacing: 0.1rem;
-                  cursor: pointer;
+                  @include btn;
+                  font-weight: normal;
                 }
                 .button:hover{
-                  width: calc( 80px - 6px );
-                  line-height: calc( 50px - 6px );
-                  background-color: white;
-                  color: black;
-                  border: 3px solid black;
+                  @include btn_hover;
                 }
-    
                 ul{
                   display: flex;
-    
                   li{
                     width: 100px;
                     line-height: 100px;
@@ -133,7 +111,6 @@
         #product_image{
           display: none;
         }
-
       }
 
 
@@ -160,43 +137,10 @@
       .submit{
         margin-top: 100px;
         width: calc( 300px + 6px );
-        height: 50px;
-        line-height: 50px;
-        background-color: black;
-        color: white;
-        text-align: center;
-        letter-spacing: 0.1rem;
-        border: none;
+        @include btn;
       }
       .submit:hover{
-        line-height: calc( 50px - 6px );
-        background-color: white;
-        color: black;
-        border: 3px solid black;
-      }
-
-
-
-      a{
-        
-        margin-top: auto;
-        .button{
-          width: 150px;
-          height: 50px;
-          line-height: 50px;
-          background-color: black;
-          color: white;
-          text-align: center;
-          letter-spacing: 0.1rem;
-        }
-        .button:hover{
-          width: calc( 150px - 6px );
-          height: calc( 50px - 6px );
-          line-height: calc( 50px - 6px );
-          background-color: white;
-          color: black;
-          border: 3px solid black;
-        }
+        @include btn_hover;
       }
     }
 }
