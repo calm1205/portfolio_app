@@ -1,8 +1,6 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'config/reset';
-@import 'config/colors';
-@import 'config/mixin';
+@import 'config/*';
 @import 'modules/users/*';
 @import 'modules/cards/*';
 @import 'modules/products/*';

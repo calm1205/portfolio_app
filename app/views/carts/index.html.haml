@@ -111,14 +111,4 @@
         .cart__summary__btn#payment
           PAYMENT
 
-  .pay
-    .pay__close
-      .pay__close--button
-        %i.fas.fa-times
-    .pay__content
-      本当に購入しますか？
-    .pay__button
-      .cancel
-        キャンセル
-      .commit
-        購入
+  = render partial: 'layouts/modal', locals: { content: 'カードを登録してません。登録しますか？', commit: '登録'}

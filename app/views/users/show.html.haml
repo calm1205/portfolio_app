@@ -85,9 +85,9 @@
             = "#{@card.exp_month} / #{@card.exp_year}"
         
       .edit
-        = link_to cards_path do
+        = link_to card_path method: :delete do
           .button
-            EDIT CARD
+            DELETE CARD
 
     - else
       .mypage__box__info
@@ -103,3 +103,5 @@
         = link_to new_card_path do
           .button
             REGISTAR CARD
+
+  = render partial: 'layouts/modal', locals: { content: '本当にカードの登録を解除しますか？', commit: '解除'}

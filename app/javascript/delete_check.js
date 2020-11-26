@@ -1,32 +1,24 @@
+import * as modal from './modal.js';
 document.addEventListener('turbolinks:load', () => {
   if ( !document.querySelector(`.pconsole`)){return false;}
 
   const deleteDOMs  = document.querySelectorAll(`.delete-button`);
   const deleteArray = Array.from(deleteDOMs);
-  const deleteCheck = document.querySelector(`.delete`);
   let   deleteId    = 0;
 
   // 削除ポップアップの出現
   deleteArray.forEach( function(deleteDOM) {
     deleteDOM.addEventListener( 'click', (e)=>{
-      deleteCheck.classList.add('show');
+      modal.open();
       deleteId = Number(e.target.dataset.index);
     });
   });
-
-  // 削除ポップアップを閉じる。
-  const closeDOM = deleteCheck.querySelector(`.delete__close--button`);
-  const cancelDOM = deleteCheck.querySelector(`.cancel`);
-  closeDOM.addEventListener( 'click', ()=>{
-    deleteCheck.classList.remove('show');
-  });
-  cancelDOM.addEventListener( 'click', ()=>{
-    deleteCheck.classList.remove('show');
-  });
+  // モーダル閉じイベント仕込み
+  modal.close();
 
   // 削除の実行
-  const deleteCommitDOM = document.querySelector(`.commit`);
-  deleteCommitDOM.addEventListener( 'click', () => {
+  const modalCommitDOM = document.querySelector(`.commit`);
+  modalCommitDOM.addEventListener( 'click', () => {
 
     const XHR = new XMLHttpRequest();
     const hash = {
@@ -45,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
       const productDOM = document.querySelector(`.delete-button[data-index="${deleteId}"]`).parentNode;
       productDOM.remove();
     }
-    deleteCheck.classList.remove('show');
-
+    
+  document.querySelector(`.modal`).classList.remove('show');
   });
 });

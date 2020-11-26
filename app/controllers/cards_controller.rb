@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-
   layout 'no_header_footer'
 
   def index
