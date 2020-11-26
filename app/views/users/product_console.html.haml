@@ -1,17 +1,6 @@
 .pconsole
 
-  .delete
-    .delete__close
-      .delete__close--button
-        %i.fas.fa-times
-    .delete__content
-      本当に削除しますか？
-    .delete__button
-      .cancel
-        キャンセル
-      .commit
-        削除
-
+  = render partial: 'layouts/modal', locals: { content: '本当に削除しますか？', commit: '削除'}
 
   .pconsole__box
     
