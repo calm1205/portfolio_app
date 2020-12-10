@@ -43,12 +43,9 @@
 }
 
 @mixin position_center{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
+  position: fixed;
+  top: calc( 50% - 200px);
+  left: 30%;
 }
 
 // form

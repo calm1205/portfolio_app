@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   get 'console/finance',  to: 'users#finance_console'
 
   resources :carts, only: [:index, :destroy]
-  resources :cards
+  resources :cards, except: [:destroy]
+  get 'card/destroy',     to: 'cards#destroy'
 end

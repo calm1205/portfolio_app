@@ -85,8 +85,8 @@
             = "#{@card.exp_month} / #{@card.exp_year}"
         
       .edit
-        = link_to card_path, method: :delete do
-          .button
+        = link_to card_destroy_path do
+          .button#delete-card-button
             DELETE CARD
 
     - else

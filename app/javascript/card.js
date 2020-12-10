@@ -1,3 +1,4 @@
+import { sidepop } from './sidepop.js';
 document.addEventListener('turbolinks:load', function () {
   if (document.location.pathname !== "/cards/new") return false;
 
@@ -34,9 +35,11 @@ document.addEventListener('turbolinks:load', function () {
         XHR.onload = () => {
           const response = JSON.parse(XHR.response);
           if (response.result){
-            window.location.href = "/cards";
+            // window.location.href = `/users/${response.result.user_id}`;
+            sidepop('カードの登録に成功しました。');
           }else{
-            location.reload();
+            // location.reload();
+            alert('カードの登録に失敗しました。');
           }
         }
 
