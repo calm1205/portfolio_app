@@ -1,26 +1,24 @@
 .pconsole, .uconsole{
-  height: calc( 100vh - 170px );
-  display: flex;
-  position: relative;
-
+    @include content_height;
+    display: flex;
+  
     &__box{
-      width: 60%;
+      width: 80%;
+      max-width: 800px;
       margin:0 auto;
       padding: 70px 0;
 
         ul.title-box{
           display: flex;
+          justify-content: space-between;
           height: 30px;
 
           li{
-            width: 100px;
+            min-width: 40px;
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
-          }
-          .title{
             margin: 0 20px;
-
           }
         }
 
@@ -28,27 +26,24 @@
           height: calc( 100vh - 340px );
           overflow-y: scroll;
 
-            .list{
-              display: flex;
-              margin: 10px 0;
-    
+            ul{
+                display: flex;
+                margin: 10px 0;
+      
+                li{
+                  width: 100px;
+                  line-height: 100px;
+                  text-align: center;
+                  margin: 0 20px;
+                }
                 .button{
                   margin: 25px 10px;
                   width: 80px;
-                  @include btn;
                   font-weight: normal;
+                  @include btn;
                 }
                 .button:hover{
                   @include btn_hover;
-                }
-                ul{
-                  display: flex;
-                  li{
-                    width: 100px;
-                    line-height: 100px;
-                    text-align: center;
-                    margin: 0 20px;
-                  }
                 }
             }
         }

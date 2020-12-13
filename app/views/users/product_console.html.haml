@@ -7,60 +7,58 @@
     %ul.title-box
       %li
       %li
-      %li.title
+      %li
         IMAGE
-      %li.title
+      %li
         NAME
-      %li.title
+      %li
         AMOUNT
-      %li.title
+      %li
         PRICE
-
 
     .pconsole__box__table
       - @products.each do |product|
-        
-        .list
-          = link_to edit_product_path(product) do
-            .button
-              EDIT
-          .button.delete-button{'data-index': product.id}
-            DELETE
-
-          %ul
-            %li
-              = image_tag product.image.variant(resize: '100x100')
-            %li
-              = product.name
-            %li
-              x
-              99
-            %li
-              = product.price
-
+        %ul
+          %li
+            = link_to edit_product_path(product) do
+              .button
+                EDIT
+          %li
+            .button.delete-button{'data-index': product.id}
+              DELETE
+          %li
+            = image_tag product.image.variant(resize: '100x100')
+          %li
+            = product.name
+          %li
+            x
+            = product.stock
+          %li
+            = product.price
 
 
-  .pconsole__new
-    = form_with model: @product, local: true do |f|
 
-      %label
-        .image
-          SELECT IMAGE
-        = f.file_field :image
+  -# .pconsole__new
+    -# = form_with model: @product, local: true do |f|
 
-      %label.input
-        .input__title
-          NAME
-        = f.text_field :name
+    -#   %label
+    -#     .image
+    -#       SELECT IMAGE
+    -#     = f.file_field :image
+
+    -#   %label.input
+    -#     .input__title
+    -#       NAME
+    -#     = f.text_field :name
       
-      %label.input
-        .input__title
-          DETAIL
-        = f.text_area :detail
+    -#   %label.input
+    -#     .input__title
+    -#       DETAIL
+    -#     = f.text_area :detail
 
-      %label.input
-        .input__title
-          PRICE
-        = f.number_field :price
+    -#   %label.input
+    -#     .input__title
+    -#       PRICE
+    -#     = f.number_field :price
 
-      = f.submit "MAKE PRODUCT", class: 'submit'
+    -#   = f.submit "MAKE PRODUCT", class: 'submit'

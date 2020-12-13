@@ -13,6 +13,7 @@
   align-items: center;
   transition: 0.5s;
 
+
   .close{
     position: absolute;
     top: 3rem;
@@ -72,11 +73,4 @@
       @include btn_hover;
     }
   }
-}
-
-.show{
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.5s;
 }

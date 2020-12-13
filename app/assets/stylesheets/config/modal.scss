@@ -1,39 +1,36 @@
-.cart, .pconsole, .mypage{
-
-  .modal{
-    @include popup;
-    &__close{
-      &--button{
-        font-size: 1.5rem;
-        width: 4rem;
-        height: 4rem;
-        margin-left: auto;
-        line-height: 4rem;
-        cursor: pointer;
-      }
-    }
-    &__content{
-      height: 120px;
-      line-height: 120px;
-    }
-    &__button{
-      display: flex;
-      height: 40px;
-      line-height: 40px;
-      border-top: 1px solid gray;
+.modal{
+  @include popup;
+  &__close{
+    &--button{
+      font-size: 1.5rem;
+      width: 4rem;
+      height: 4rem;
+      margin-left: auto;
+      line-height: 4rem;
       cursor: pointer;
-      .cancel{
-        width: calc( 50% - 1px );
-        border-right: 1px solid gray;
-      }
-      .commit{
-        width:  50%;
-      }
     }
   }
-
-  .show{
-    opacity: 1;
-    transition: 0.5s;
+  &__content{
+    height: 120px;
+    line-height: 120px;
   }
+  &__button{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid gray;
+    cursor: pointer;
+    .cancel{
+      width: calc( 50% - 1px );
+      border-right: 1px solid gray;
+    }
+    .commit{
+      width:  50%;
+    }
+  }
+}
+
+.show{
+  opacity: 1;
+  transition: 0.5s;
 }

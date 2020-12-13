@@ -4,8 +4,8 @@
 export function open(){
   const modalDOM    = document.querySelector('.modal');
   modalDOM.classList.add('show');
-  document.addEventListener('mousewheel', function(e){ e.preventDefault();}, { passive:false});
-  document.addEventListener('touchmove', function(e){ e.preventDefault();}, { passive:false});
+  document.addEventListener('mousewheel', noScroll, { passive:false});
+  document.addEventListener('touchmove', noScroll, { passive:false});
 }
 
 // モーダルウィンドウの閉じイベント仕込み
@@ -14,9 +14,19 @@ export function close(){
     const closeDOM  = document.querySelector(`.modal__close--button`);
     const cancelDOM = document.querySelector(`.cancel`);
     closeDOM.addEventListener( 'click', ()=>{
-      modalDOM.classList.remove('show');
+      closeAction(modalDOM);
     });
     cancelDOM.addEventListener( 'click', ()=>{
-      modalDOM.classList.remove('show');
+      closeAction(modalDOM);
     });
 };
+
+function noScroll(e){
+  e.preventDefault();
+}
+
+function closeAction(modalDOM){
+  modalDOM.classList.remove('show');
+  document.removeEventListener('mousewheel', noScroll, { passive:false});
+  document.removeEventListener('touchmove', noScroll, { passive:false});
+}
