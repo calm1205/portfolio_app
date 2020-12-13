@@ -7,13 +7,13 @@ window.addEventListener('turbolinks:load', () => {
 
   // メニュー出す時
   searchBtn.addEventListener('click', ()=> {
-    searchDOM.classList.add('show');
+    searchDOM.style.top = '0';
     document.querySelector(`.search-text`).focus();
   });
 
   // メニューしまう時
   closeBtn.addEventListener(`click`, ()=> {
-    searchDOM.classList.remove('show');
+    searchDOM.style.top = '-100vh';
   });
 
 });
