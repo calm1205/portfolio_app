@@ -50,15 +50,22 @@
                 }
             }
 
-            #cart_btn{
-                margin-bottom: 30px;
-            }
             .button{
                 width: 100%;
                 @include btn;
+                a{
+                    color: white;
+                }
             }
             .button:hover{
                 @include btn_hover;
+                a{
+                    display: block;
+                    color: black;
+                }
+            }
+            .half{
+                width: 48%;
             }
         }
     }

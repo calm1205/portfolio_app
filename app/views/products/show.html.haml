@@ -37,3 +37,12 @@
     .info
       .button#cart_btn{value: @product.id}
         ADD TO CART
+
+    - if current_user.admin
+      .info
+        .button.half
+          = link_to edit_product_path(@product) do
+            EDIT
+        .button.delete-button.half{'data-index': @product.id}
+          DELETE
+      = render partial: 'layouts/modal', locals: { content: '本当に削除しますか？', commit: '削除'}
