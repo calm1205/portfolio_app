@@ -4,7 +4,7 @@
 }
 
 @mixin content_height {
-  height: calc( 100vh - 170px );
+  height: calc( 100vh - 140px );
 }
 @mixin content_width {
   max-width: 700px;
