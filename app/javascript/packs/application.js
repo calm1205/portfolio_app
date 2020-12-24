@@ -15,6 +15,7 @@ require('like')
 require('delete_product_check')
 require('delete_card_check')
 require('search')
+require('product_form')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
