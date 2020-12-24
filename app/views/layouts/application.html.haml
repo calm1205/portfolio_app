@@ -81,7 +81,8 @@
       = yield
     %footer
       %ul.footer-nav
-        %li.footer-list 会社概要
+        = link_to new_product_path do
+          %li.footer-list 会社概要
         %li.footer-list 特定取引法表示
         %li.footer-list 利用規約
         %li.footer-list お問い合わせ

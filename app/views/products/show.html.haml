@@ -1,6 +1,6 @@
 .product
   .image
-    = image_tag @product.image
+    = image_tag @product.images.first.src.url
     - if user_signed_in?
       .like
         - if current_user.have_already_liked?(@product.id)
