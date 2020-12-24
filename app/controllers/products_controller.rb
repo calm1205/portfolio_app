@@ -38,8 +38,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    binding.pry
-    if @product.update!(product_params)
+    if @product.update(product_params)
       redirect_to root_path
     else
       render :edit
