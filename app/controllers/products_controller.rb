@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.build
   end
 
   def create
@@ -32,10 +33,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product.images.build
   end
 
   def update
     @product = Product.find(params[:id])
+    binding.pry
     if @product.update!(product_params)
       redirect_to root_path
     else
@@ -54,9 +57,19 @@ class ProductsController < ApplicationController
 
   private
   
+  # === Active Storage ===
+  # def product_params
+  #   params.require(:product).permit(:name, :detail, :price, :image)
+  # end
+
+  # === Accepts_nested_attributes_for ===
   def product_params
-    params.require(:product).permit(:name, :detail, :price, :image)
-    # category_id user_idは実装完了後にパラメータに入れる
+    params.require(:product).permit(
+      :name,
+      :detail,
+      :price,
+      images_attributes: [:src, :id, :_destroy]
+    )
   end
 
   # def admin_user?

@@ -1,6 +1,41 @@
-= form_with model: @product, local: true do |f|
-  = f.text_field :name
-  = f.text_field :detail
-  = f.text_field :price
-  = f.file_field :image
-  = f.submit
+.product__form
+  = form_with model: @product, local: true ,id: 'product-form' do |f|
+    .image.flex
+      -# Default images preview area 
+      - @product.images.each_with_index do |image,index|
+        - unless image.src.url.nil?
+          %label.image__default{ 'data-index': index, for: "product_images_attributes_#{index}_src" }
+            -# = image_tag @product.image # ActiveStorage
+            = image_tag image.src.url
+            %i.far.fa-times-circle
+
+      -# New image input area
+      %label.image__new#new-label{ for: "product_images_attributes_#{@product.images.length - 1}_src" }
+        .image__new--text
+          upload new image
+
+    .form#image-file-fields
+      = f.fields_for :images do |image|
+        = image.file_field :src, accept: "image/*", class: "file_field_#{image.index}"
+        - if image.object.persisted?
+          = image.check_box :_destroy, include_hidden: false
+
+    .form
+      .form__title
+        NAME
+      .form__field
+        = f.text_field :name
+
+    .form
+      .form__title
+        DETAIL
+      .form__field
+        = f.text_area :detail
+
+    .form
+      .form__title
+        PRICE
+      .form__field
+        = f.text_field :price
+
+    = f.submit "#{action} COMMIT" ,class: "submit"

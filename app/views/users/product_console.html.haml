@@ -27,7 +27,8 @@
             .button.delete-button{'data-index': product.id}
               DELETE
           %li
-            = image_tag product.image.variant(resize: '100x100')
+            -# = image_tag product.images.variant(resize: '100x100') # Active Storage
+            = image_tag product.images.first.src.url if product.images.present?
           %li
             = product.name
           %li

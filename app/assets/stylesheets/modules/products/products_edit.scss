@@ -1,83 +1,102 @@
-.pEdit{
-  height: calc( 100vh - 320px);
-  padding: 50px 0 100px;
+.product__form{
+  @include content_height;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 0;
 
-  &__box{
-    width: 35%;
-    margin: 0 auto;
-
-
-    .image{
-
+  .image{
+    height: 300px;
+    align-items: center;
+    &__default{
+      width: 100%;
+      max-width: 300px;
+      margin-right: 20px;
+      position: relative;
+      cursor: pointer;
       img{
-        width: calc( 100% - 10px );
-        border: 5px solid lightgray;
-        border-bottom: none;
-      }
-      label{
-        display: block;
         width: 100%;
-        height: 3rem;
-        line-height: 3rem;
-        text-align: center;
-        color: white;
-        background-color: lightgray;
+        border: 5px solid lightgray;
+      }
+      i{
+        position: absolute;
+        top: -4px;
+        right: -8px;
+        font-size: 2rem;
+        background-color: white;
+        border-radius: 3rem;
         cursor: pointer;
       }
-      label:hover{
-        background-color: white;
-        color: gray;
-        width: calc( 100% - 10px );
-        height: calc( 3rem - 5px);
-        line-height: calc( 3rem);
-        border: 5px solid lightgray;
-        border-top: none;
-      }
-      #image{
-        display: none;
-      }
     }
-
-    .form{
+    &__new{
+      width: 100%;
+      max-height: 300px;
+      background-color: white;
+      border: 5px solid lightgray;
       display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-
-      &__title{
-        font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      &--text{
+        color: gray;
         font-size: 1.5rem;
       }
-      &__field{
-        input{
-          width: 150px;
-          padding: 5px;
-          border: 1px solid lightgray;
-        }
-        textarea{
-          width: 150px;
-          padding: 5px;
-          border: 1px solid lightgray;
-        }
-      }
     }
-
-    .submit{
-      margin-top: 20px;
-      width: 100%;
-      height: 50px;
-      line-height: 50px;
-      background-color:$black;
-      color: white;
-      text-align: center;
-      letter-spacing: 0.1rem;
-      border: none;
+    &__new:before{
+      display: block;
+      content: '';
+      padding-top: 100%;
+    }
+    &__new:hover {
+      background-color: lightgray;
       cursor: pointer;
     }
-    .submit:hover{
-      line-height: calc( 50px - 6px );
-      background-color: white;
-      color:$black;
-      border: 3px solid$black;
+    &__new:hover > .image__new--text {
+      color: white;
     }
+  }
+
+  .form{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    &__title{
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    &__field{
+      input{
+        width: 150px;
+        padding: 5px;
+        border: 1px solid lightgray;
+      }
+      textarea{
+        width: 150px;
+        padding: 5px;
+        border: 1px solid lightgray;
+      }
+    }
+    input[type='checkbox'], input[type='file']{
+      display: none;
+    }
+  }
+
+  .submit{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color:$black;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    border: none;
+    cursor: pointer;
+  }
+  .submit:hover{
+    line-height: calc( 50px - 6px );
+    background-color: white;
+    color:$black;
+    border: 3px solid$black;
   }
 }

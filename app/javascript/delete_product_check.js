@@ -1,7 +1,7 @@
 import * as modal from './modal.js';
 document.addEventListener('turbolinks:load', () => {
   const deleteDOMs  = document.querySelectorAll(`.delete-button`);
-  if ( !deleteDOMs ) { return false; }
+  if ( !deleteDOMs.length ) { return false; }
 
   const deleteArray = Array.from(deleteDOMs);
   let   deleteId    = 0;
