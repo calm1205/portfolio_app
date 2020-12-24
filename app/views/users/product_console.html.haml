@@ -36,30 +36,3 @@
             = product.stock
           %li
             = product.price
-
-
-
-  -# .pconsole__new
-    -# = form_with model: @product, local: true do |f|
-
-    -#   %label
-    -#     .image
-    -#       SELECT IMAGE
-    -#     = f.file_field :image
-
-    -#   %label.input
-    -#     .input__title
-    -#       NAME
-    -#     = f.text_field :name
-      
-    -#   %label.input
-    -#     .input__title
-    -#       DETAIL
-    -#     = f.text_area :detail
-
-    -#   %label.input
-    -#     .input__title
-    -#       PRICE
-    -#     = f.number_field :price
-
-    -#   = f.submit "MAKE PRODUCT", class: 'submit'

@@ -25,6 +25,8 @@
         &__table{
           height: calc( 100vh - 340px );
           overflow-y: scroll;
+          
+  box-shadow: 10px 15px 20px $shadow;
 
             ul{
                 display: flex;
@@ -35,6 +37,10 @@
                   line-height: 100px;
                   text-align: center;
                   margin: 0 20px;
+                  img{
+                    width: 150px;
+                    height: 150px;
+                  }
                 }
                 .button{
                   margin: 25px 10px;
@@ -47,58 +53,5 @@
                 }
             }
         }
-    }
-
-    &__new{
-      width: 30%;
-      padding: 70px 0;
-
-      label{
-        width: calc( 300px + 6px );
-        cursor: pointer;
-        .image{
-          height: 300px;
-          width: 300px;
-          border: 3px solid whitesmoke;
-          line-height: 300px;
-          text-align: center;
-          color: lightgray;
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
-        #product_image{
-          display: none;
-        }
-      }
-
-
-      .input{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-
-        &__title{
-          font-size: 1.3rem;
-          font-weight: bold;
-        }
-        input{
-          width: 150px;
-          border: 1px solid lightgray;
-        }
-        textarea{
-          width: 150px;
-          height: 50px;
-          border: 1px solid lightgray;
-        }
-      }
-
-      .submit{
-        margin-top: 100px;
-        width: calc( 300px + 6px );
-        @include btn;
-      }
-      .submit:hover{
-        @include btn_hover;
-      }
     }
 }

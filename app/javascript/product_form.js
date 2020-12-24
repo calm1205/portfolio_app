@@ -6,7 +6,6 @@ document.addEventListener('turbolinks:load', () => {
   const MAX_IMAGES_COUNT     = 5;
   const newLabel             = document.getElementById('new-label');
   const imageFileFieldsBox   = document.getElementById('image-file-fields');
-  const defaultFileFieldDOMs = document.querySelectorAll('[class^=file_field_]');
 
   // HTML of new input file field
   const newFileField = (index) => {
@@ -42,7 +41,7 @@ document.addEventListener('turbolinks:load', () => {
       const imageCount = document.querySelectorAll(`.image__default`).length;
       if ( imageCount == MAX_IMAGES_COUNT - 1 ){
         // display new file field.
-        newLabel.style.display = 'block';
+        newLabel.style.display = 'flex';
       }
 
       // update checkbox
@@ -88,10 +87,12 @@ document.addEventListener('turbolinks:load', () => {
   // set delete event for default preview.
   const defaultPreviewDOMs = document.querySelectorAll(`.image__default`);
   defaultPreviewDOMs.forEach( (defaultPreview, index)=> { deleteAction(index); });
+  if ( defaultPreviewDOMs.length == MAX_IMAGES_COUNT ){ newLabel.style.display = 'none'; }
 
   // set insert event for default input file field
+  const defaultFileFieldDOMs = document.querySelectorAll('[class^=file_field_]');
   defaultFileFieldDOMs.forEach( (defaultFileFieldDOM) => { 
     defaultFileFieldDOM.addEventListener('change', (e) => { insertPreviewAndInput(e); });
   });
-
+  
 });
