@@ -23,12 +23,20 @@ Address.new(
 PRODUCT_ARRAY = [ "cap-boy", "cart-dash", "cuple", "drink-coffee", "matilda", "ride-bike", "see-back", "sitdown", "yoda"]
 
 PRODUCT_ARRAY.each do |image_name|
+
+  image = Image.new(
+    src: File.open("app/assets/images/#{image_name}.jpg")
+  )
   product = Product.new( 
     name: image_name, 
     detail: "#{image_name} detail", 
     price: 9999,
     stock: 99
   )
-  product.image.attach(io: File.open("app/assets/images/#{image_name}.jpg"), filename: "#{image_name}.jpg")
+
+  product.images << image
+
+  # This is for Active Storage
+  # product.image.attach(io: File.open("app/assets/images/#{image_name}.jpg"), filename: "#{image_name}.jpg")
   product.save!
 end
