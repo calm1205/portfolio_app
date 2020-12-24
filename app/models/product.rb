@@ -1,7 +1,11 @@
 class Product < ApplicationRecord
 
   # association
-  has_one_attached :image, dependent: :destroy
+  # has_one_attached :image, dependent: :destroy #Active Storage
+  
+  has_many         :images, dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true, update_only: true, limit: 5
+
   has_many         :cart_products, dependent: :destroy
   has_many         :carts, through: :cart_products
   has_many         :likes, dependent: :destroy
@@ -11,7 +15,8 @@ class Product < ApplicationRecord
     validates :name
     validates :price
     validates :detail
-    validates :image
+    validates :images # Accepts_nested_attributes_fot
+    # validates :image #Active Storage
   end
 
   # method
