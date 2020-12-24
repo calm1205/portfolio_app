@@ -8,6 +8,8 @@
             -# = image_tag @product.image # ActiveStorage
             = image_tag image.src.url
             %i.far.fa-times-circle
+            .edit-image
+              Replacement image
 
       -# New image input area
       %label.image__new#new-label{ for: "product_images_attributes_#{@product.images.length - 1}_src" }

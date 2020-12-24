@@ -27,18 +27,36 @@
         border-radius: 3rem;
         cursor: pointer;
       }
+      .edit-image{
+        opacity: 0;
+        width: 100%;
+        background: lightgray;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        color: white;
+        line-height: 30px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: 0.3s;
+      }
+    }
+    &__default:hover > .edit-image{
+      opacity: 1;
     }
     &__new{
-      width: 100%;
+      width: 95%;
       max-height: 300px;
       background-color: white;
       border: 5px solid lightgray;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: 0.3s;
       &--text{
         color: gray;
-        font-size: 1.5rem;
+        font-size: 1vw;
       }
     }
     &__new:before{
@@ -66,12 +84,12 @@
     }
     &__field{
       input{
-        width: 150px;
+        width: 300px;
         padding: 5px;
         border: 1px solid lightgray;
       }
       textarea{
-        width: 150px;
+        width: 300px;
         padding: 5px;
         border: 1px solid lightgray;
       }

@@ -19,6 +19,7 @@ document.addEventListener('turbolinks:load', () => {
       <label class="image__default" data-index="${index}" for="product_images_attributes_${index}_src">
         <img src="${blobUrl}">
         <i class="far fa-times-circle"></i>
+        <div class="edit-image">Replacement image</div>
       </label>
     `;
   }
