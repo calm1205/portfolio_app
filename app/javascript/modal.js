@@ -6,6 +6,7 @@ export function open(){
   if (!document.querySelector('.modal')){ return false; }
   const modalDOM    = document.querySelector('.modal');
   modalDOM.classList.add('show');
+  modalDOM.style.zIndex = '9999';
   document.addEventListener('mousewheel', noScroll, { passive:false});
   document.addEventListener('touchmove', noScroll, { passive:false});
 }
@@ -30,6 +31,7 @@ function noScroll(e){
 
 function closeAction(modalDOM){
   modalDOM.classList.remove('show');
+  modalDOM.style.zIndex = '-1';
   document.removeEventListener('mousewheel', noScroll, { passive:false});
   document.removeEventListener('touchmove', noScroll, { passive:false});
 }
