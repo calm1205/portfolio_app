@@ -25,7 +25,8 @@
           .cart__products__list--card{'data-index': cart_product.id}
             .detail
               = link_to product_path cart_product.product do
-                = image_tag cart_product.product.image.variant(resize: '150x150')
+                -# = image_tag cart_product.product.image.variant(resize: '150x150') #
+                = image_tag cart_product.product.images.first.src.url
               .detail__info
                 .detail__info--name
                   = cart_product.product.name
