@@ -1,5 +1,5 @@
 .cart{
-    height: calc( 100vh - 170px );
+    @include content_height;
     display: flex;
     position: relative;
 
@@ -54,6 +54,7 @@
                 display: flex;
                 img{
                   border-right: 5px solid whitesmoke;
+                  width: 150px;
                 }
                 &__info{
                   margin-left: 2rem;

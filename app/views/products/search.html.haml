@@ -2,6 +2,7 @@
   - @products.each do |product|
     .products__card
       = link_to product_path(product) do
-        = image_tag product.image.variant(resize:'170x170')
+        -# = image_tag product.image.variant(resize:'170x170')
+        = image_tag product.images.first.src.url
       = product.name
       = product.price
