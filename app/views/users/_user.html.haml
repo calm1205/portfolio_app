@@ -1,0 +1,11 @@
+.user__name
+  = user.nickname
+.user__email
+  = user.email
+.user__auth
+  -if user.admin
+    admin
+  -elsif user.member
+    member
+  - else
+    normal

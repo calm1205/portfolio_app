@@ -1,6 +1,8 @@
 .mypage{
   width: 100%;
-  margin: 50px 0;
+  padding: 50px 0;
+  @include content_height;
+  overflow-y: scroll;
   position: relative;
 
   &__box{

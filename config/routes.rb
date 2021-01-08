@@ -29,13 +29,12 @@ Rails.application.routes.draw do
   
   resources :purchases do
     collection do
-      get 'confirm', to: 'purchases#confirm'
+      get  'confirm',  to: 'purchases#confirm'
       post 'purchase', to: 'purchases#purchase'
     end
   end
 
   resources :users, only: [:show]
-  get 'console/products', to: 'users#product_console'
   get 'console/users',    to: 'users#user_console'
   get 'console/finance',  to: 'users#finance_console'
 

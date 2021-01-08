@@ -7,6 +7,9 @@
             -# = image_tag product.image # Active Storage
             = image_tag product.images.first.src.url if product.images.present?
             
+      -if @products.length % 3 == 2 && shelf_index == 3
+        .blank-product
+
   = paginate(@products)
   - if paginate(@products).blank?
     .blank
