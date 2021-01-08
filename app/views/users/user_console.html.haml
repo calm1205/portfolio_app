@@ -1,33 +1,24 @@
 .uconsole
+
+  .uconsole__title
+    .users__number
+      = @users.length
+      users
+
   .uconsole__box
     
-    %ul.title-box
-      %li
-      %li
-      %li.title
-        NICKNAME
-      %li.title
-        EMAIL
-      %li.title
-        MEMBER
+    - @users.each do |user|
+      - if user.admin
+        .user.red
+          = render user
 
+      - elsif user.member
+        .user.green
+          = render user
 
-    .uconsole__box__table
-      - @users.each do |user|
-        
-        .list
-          = link_to edit_user_registration_path(user) do
-            .button
-              EDIT
+      - else 
+        .user
+          = render user
 
-          = link_to user_path(user), method: :delete do
-            .button
-              DELETE
-
-          %ul
-            %li
-              = user.nickname
-            %li
-              = user.email
-            %li
-              = user.member
+    - if @users.length % 3 == 2
+      .blank-card

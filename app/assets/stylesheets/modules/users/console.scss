@@ -1,0 +1,51 @@
+.uconsole{
+  @include content_height;
+  overflow-y: scroll;
+
+  &__title{
+    padding: 50px 0 0;
+    margin: 0 auto;
+    @include content_width;
+    .users__number{
+      font-size: 2rem;
+      text-align: right;
+    }
+  }
+
+  &__box{
+    padding: 50px 0 100px;
+    margin: 0 auto;
+    @include content_width;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .user{
+      width: 30%;
+      height: 100px;
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 2px solid lightgray;
+      cursor: pointer;
+      &:hover{
+        box-shadow: 5px 5px 10px #888888;
+      }
+
+      &__email{
+        margin-bottom: 10px;
+      }
+      &__auth{
+        text-align: right;
+      }
+    }
+    .blank-card{
+      width: 30%;
+    }
+    .red{
+      border: 2px solid orangered;
+    }
+    .green{
+      border: 2px solid mediumaquamarine;
+    }
+  }
+}
