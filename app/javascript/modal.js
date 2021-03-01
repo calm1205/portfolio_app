@@ -1,6 +1,5 @@
 // ========= モーダルウィンドウの関数 ============
 
-
 // モーダル表示
 export function open(){
   if (!document.querySelector('.modal')){ return false; }
