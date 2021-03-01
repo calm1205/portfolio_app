@@ -21,7 +21,7 @@ Address.new(
 ).save(validate: false)
 
 PRODUCT_ARRAY = [ "cap-boy", "cart-dash", "cuple", "drink-coffee", "matilda", "ride-bike", "see-back", "sitdown", "yoda"]
-
+# File.open("app/assets/images/cap-boy.jpg")
 PRODUCT_ARRAY.each do |image_name|
 
   image = Image.new(
