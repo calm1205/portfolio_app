@@ -74,3 +74,5 @@ gem 'payjp'
 gem 'whenever'
 gem 'kaminari'
 gem 'font-awesome-sass'
+gem "aws-sdk-s3", require: false
+gem 'fog-aws'
