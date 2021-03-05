@@ -38,7 +38,7 @@
       .button#cart_btn{value: @product.id}
         ADD TO CART
 
-    - if current_user.admin
+    - if user_signed_in? and current_user.admin
       .info
         .button.half
           = link_to edit_product_path(@product) do
